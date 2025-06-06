@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vicente Venegas | Portfolio</title>
-  <meta name="description" content="Portfolio of Vicente Venegas, designer and multidisciplinary maker." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="font" href="/fonts/SpaceGrotesk-VariableFont_wght.ttf" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
+  <nav class="navbar">
+    <!-- Using <a> tags for better semantics and tab navigation -->
+    <a href="#" class="nav-item nav-left">vicente venegas*</a>
+    <a href="#about" class="nav-item nav-about">about↗</a>
+    <a href="#contact" class="nav-item nav-contact">contact↗</a>
+  </nav>
 
-  <header>
-    <h1 class="logo">vicente venegas</h1>
-    <nav aria-label="Main navigation">
-      <ul class="nav-list">
-        <li><a href="#works">about↗︎</a></li>
-        <li><a href="#about">contact↗︎</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Hero Section: occupies full viewport height and respects horizontal margins -->
+  <section class="hero">
+    <!-- Three separate SVG containers referencing external SVG files -->
+    <div class="svg-container svg1">
+      <img src="svg/text.svg" alt="Multidisciplinary designer text" />
+    </div>
+      <div class="svg-container svg2">
+      <img src="svg/hand.svg" alt="Hand illustration" />
+    </div>
+    <div class="svg-container svg3">
+      <img src="svg/pc.svg" alt="Computer illustration" />
+    </div>
+  </section>
 
-  <main id="main-content">
-    <section id="works" class="projects-grid">
-      <a href="#djavu" class="project">
-        <div class="info">
-          <span class="label">djavu</span>
-          <span class="tagline">Music hardware for as gateway to modern music production.</span>
-        </div>
-        <div class="image-wrapper">
-          <img src="images/djavu.png" alt="Djavu project thumbnail" loading="lazy" />
-        </div>
-      </a>
-      <!-- Repeat for other projects -->
-    </section>
+  <main class="container">
+    <!-- Rest of your content goes here, structured within the responsive grid -->
   </main>
+
+  <!-- Separate JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>

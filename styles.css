@@ -37,6 +37,7 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  scroll-behavior: auto; /* Disable native smooth scrolling */
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -141,6 +142,7 @@ body {
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
   padding: 0 var(--margin);
+  margin-bottom: 2.5rem;
   background: transparent;
 }
 
@@ -148,6 +150,15 @@ body {
 @media (max-width: 1200px) {
   .hero {
     height: calc(100vw * 0.5);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    aspect-ratio: auto;
+    height: calc(100vw * 0.25);
+    padding: 0 var(--margin);
+    margin-bottom: 0;
   }
 }
 
@@ -169,78 +180,243 @@ body {
   height: auto;
 }
 
-/* === Desktop Default === */
-.svg1 {
-  top: 7%;
-  left: var(--margin);
-  width: 50%;
+/* Responsive SVG arrangement for hero landing */
+.hero .svg-container.text {
+  position: absolute; /* Fix alignment issue */
+  top: 8%;
+  left: 0;
+  width: clamp(45%, 55%, 65%);
+  overflow: hidden; /* keep for wipe effect */
+  z-index: 3;
 }
 
-.svg2 {
-  top: 17%;
-  left: calc(var(--margin) + 1.5rem);
-  width: 8.3%;
+.hero .svg-container.hand {
+  top: 18%;
+  left: calc(var(--margin) + 3%);
+  width: clamp(7%, 9%, 11%);
 }
 
-.svg3 {
+.hero .svg-container.contact {
+  bottom: 20%;
+  left: calc(var(--margin) + 9%);
+  width: clamp(7%, 10%, 12%);
+}
+
+.hero .svg-container.pc {
   bottom: 8%;
   right: var(--margin);
-  rotate: -10deg;
-  width: 38%;
+  width: clamp(20%, 30%, 40%);
 }
 
-/* === Tablet === */
+.hero .svg-container.down {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(2%, 2.5%, 3%);
+}
+
 @media (max-width: 1024px) {
-  .hero {
-    aspect-ratio: auto;
-    height: calc(100vw * 0.5);
+  .hero .svg-container.text {
+    top: 10%;
+    width: clamp(45%, 55%, 65%);
   }
-
-  .svg1 {
-    top: 5%;
-    left: var(--margin);
-    width: 60%;
+  .hero .svg-container.hand {
+    top: 20%;
+    width: clamp(7%, 9%, 11%);
   }
-
-  .svg2 {
-    top: 17%;
-    left: calc(var(--margin) + 1.5rem);
-    width: 10%;
+  .hero .svg-container.contact {
+    bottom: 17%;
+    width: clamp(13%, 15%, 17%);
   }
-
-  .svg3 {
-    bottom: 6%;
-    right: var(--margin);
-    width: 35%;
+  .hero .svg-container.pc {
+    bottom: 0%;
+    width: clamp(31%, 38%, 45%);
+  }
+  .hero .svg-container.down {
+    opacity: 0;
+    bottom: 0%;
   }
 }
 
-/* === Phone === */
 @media (max-width: 600px) {
-  .hero {
-    aspect-ratio: auto;
-    height: calc(100vw * 0.25);
-    padding: 0 var(--margin);
+  .hero .svg-container.text {
+    top: 13%;
+    width: clamp(70%, 75%, 80%);
   }
-
-  .svg1 {
-    top: 15%;
-    left: var(--margin);
-    width: 80%;
+  .hero .svg-container.hand {
+    top: 40%;
+    left: calc(var(--margin) + 6%);
+    width: clamp(9%, 11%, 13%);
   }
-
-  .svg2 {
-    top: 45%;
-    left: calc(var(--margin) + 1rem);
-    width: 14%;
-  }
-
-  .svg3 {
-    display: none;
+  .hero .svg-container.contact,
+  .hero .svg-container.pc {
+    display: none !important;
   }
 }
 
-/* === MAIN CONTAINER === */
+/* === HERO SVG ANIMATIONS REMOVED === */
+.hero .svg-container,
+.hero .svg-container.text,
+.hero .svg-container.hand,
+.hero .svg-container.pc,
+.hero .svg-container.down,
+.hero .svg-container.contact {
+  opacity: 1;
+  animation: none;
+  animation-name: none;
+  animation-delay: 0s;
+  animation-duration: 0s;
+  animation-timing-function: initial;
+  animation-fill-mode: none;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+/* === HERO SVG REVEAL (WIPE) ANIMATION FOR TEXT AND HAND - Z-INDEX FIX (HAND BELOW TEXT) === */
+.hero .svg-container.text {
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+}
+.hero .svg-container.hand {
+  position: absolute;
+  overflow: visible;
+  z-index: 2;
+}
+.hero .svg-container.hand .wipe-reveal {
+  z-index: 2;
+}
+.hero .svg-container.text .wipe-reveal {
+  z-index: 3;
+}
+
+/* === HERO SVG REVEAL (WIPE) ANIMATION FOR TEXT AND HAND === */
+.hero .svg-container.text,
+.hero .svg-container.hand {
+  overflow: hidden;
+}
+
+.hero .svg-container .wipe-reveal {
+  position: absolute;
+  inset: 0;
+  background: #fff; /* match hero background */
+  z-index: 2;
+  transform: translateX(0);
+  transition: transform 1s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+
+.hero .svg-container.revealed .wipe-reveal {
+  transform: translateX(100%);
+}
+
+/* Fix hand SVG position after adding wipe reveal overlay */
+.hero .svg-container.hand {
+  position: absolute; /* restore absolute positioning */
+  overflow: visible;  /* allow overlay to be hidden, but keep SVG positioned */
+}
+.hero .svg-container.hand .wipe-reveal {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* === PROJECTS SECTION === */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--gutter);
+  padding: 2rem var(--margin);
+}
+
+.project-tile {
+  position: relative;
+  grid-column: span 3;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid transparent; /* Default border */
+  transition: border-color 0.3s ease-in-out; /* Smooth transition for border */
+}
+
+.project-tile:hover {
+  border-color: #000; /* Black border on hover */
+}
+
+.project-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-tile .tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.project-tile:hover .tile-overlay {
+  opacity: 1;
+}
+
+.pill {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50px;
+  padding: 0.22rem 1rem 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: var(--font-kerning-nav);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-tile:hover .pill {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .pill {
+    padding: 0.2rem 0.75rem 0;
+  }
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .project-tile {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .pill {
+    padding: 0.1rem 0.6rem 0;
+    top: 0.8rem;
+    left: 0.8rem;
+  }
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem var(--margin);
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    grid-template-columns: 1fr;
+    padding: 1rem var(--margin);
+    gap: 1rem;
+  }
+  .project-tile {
+    grid-column: span 1;
+  }
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
@@ -266,3 +442,68 @@ body {
     gap: 1rem;
   }
 }
+
+/* Add animations for contact SVG */
+@keyframes contact-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes contact-slide-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure the contact SVG remains invisible initially */
+.hero .svg-container.contact {
+  opacity: 0; /* Start hidden */
+}
+
+.hero .svg-container.down {
+  opacity: 0; /* Start hidden */
+}
+
+
+@media (max-width: 600px) {
+  .hero .svg-container.contact,
+  .hero .svg-container.down {
+    display: none !important;
+  }
+
+  .hero .svg-container.hand {
+    display: block !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero .svg-container.down {
+    display: none !important;
+  }
+}
+
+/* Locomotive Scroll styles */
+.locomotive-scroll {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+[data-scroll-container] {
+  position: relative;
+}
+
+[data-scroll-section] {
+  position: relative;
+}
+

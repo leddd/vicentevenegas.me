@@ -333,7 +333,7 @@ body {
   grid-column: span 3;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid transparent; /* Default border */
+  border: 2px solid transparent; /* Default border */
   transition: border-color 0.3s ease-in-out; /* Smooth transition for border */
 }
 
@@ -367,7 +367,7 @@ body {
   top: 1rem;
   left: 1rem;
   background-color: #fff;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 50px;
   padding: 0.22rem 1rem 0;
   font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -384,7 +384,7 @@ body {
 
 @media (max-width: 1024px) {
   .pill {
-    padding: 0.2rem 0.75rem 0;
+    padding: 0.2rem 0.75rem 0
   }
   .projects {
     grid-template-columns: repeat(4, 1fr);
@@ -399,6 +399,7 @@ body {
     padding: 0.1rem 0.6rem 0;
     top: 0.8rem;
     left: 0.8rem;
+    
   }
   .projects {
     grid-template-columns: repeat(2, 1fr);
@@ -505,5 +506,32 @@ body {
 
 [data-scroll-section] {
   position: relative;
+}
+
+@media (max-width: 1024px) {
+  .pill {
+    border-width: 1px;
+  }
+  .project-tile {
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pill {
+    border-width: 1px;
+  }
+  .project-tile {
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pill {
+    border-width: 1px;
+  }
+  .project-tile {
+    border-width: 1px;
+  }
 }
 

@@ -37,7 +37,7 @@
 html {
   box-sizing: border-box;
   height: 100%;
-  scroll-behavior: auto; /* Disable native smooth scrolling */
+  scroll-behavior: auto; /* Enable native smooth scrolling */
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -62,6 +62,10 @@ body {
   padding: 0.9375rem var(--margin);
   height: var(--navbar-height);
   gap: var(--gutter);
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly below */
+  animation: fadeUp 0.8s ease-out forwards; /* Trigger animation */
+  animation-delay: 0.3s; /* Optional delay for better timing */
 }
 
 .nav-item {
@@ -335,7 +339,17 @@ body {
   overflow: hidden;
   border: 2px solid transparent; /* Default border */
   transition: border-color 0.3s ease-in-out; /* Smooth transition for border */
+  opacity: 0;
+  transform: translateY(40px) skewY(3deg);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
+.project-tile.reveal {
+  opacity: 1;
+  transform: translateY(0) skewY(0);
+}
+
+
 
 .project-tile:hover {
   border-color: #000; /* Black border on hover */
@@ -533,5 +547,37 @@ body {
   .project-tile {
     border-width: 1px;
   }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px; /* Slightly larger cursor */
+  height: 1px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.3); /* Brighter glow */
+  box-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.4); /* More blur and brightness */
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+  opacity: 0;
+}
+
+body:hover #custom-cursor {
+  opacity: 1;
 }
 

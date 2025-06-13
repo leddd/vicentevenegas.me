@@ -5,64 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+
 </head>
 <body>
-  <nav class="navbar">
-    <!-- Using <a> tags for better semantics and tab navigation -->
-    <a href="#" class="nav-item nav-left">vicente venegas*</a>
-    <a href="#about" class="nav-item nav-about">about↗</a>
-    <a href="#contact" class="nav-item nav-contact">contact↗</a>
-  </nav>
+  <div id="custom-cursor"></div>
+  <main data-scroll-container>
 
-  <!-- Hero Section with SVGs -->
-  <section class="hero">
-    <div class="svg-container text">
-      <img src="svg/text.svg" alt="Multidisciplinary designer text">
-    </div>
-    <div class="svg-container hand">
-      <img src="svg/hand.svg" alt="Hand illustration">
-    </div>
-    <div class="svg-container contact">
-      <img src="svg/contact.svg" alt="Contact illustration">
-    </div>
-    <div class="svg-container pc">
-      <img src="svg/pc.svg" alt="Computer illustration">
-    </div>
-    <div class="svg-container down">
-      <img src="svg/down.svg" alt="Down arrow">
-    </div>
-  </section>
+    <nav class="navbar">
+      <!-- Using <a> tags for better semantics and tab navigation -->
+      <a href="#" class="nav-item nav-left" id="scroll-to-projects">vicente venegas*</a>
+      <a href="#about" class="nav-item nav-about">about↗</a>
+      <a href="#contact" class="nav-item nav-contact">contact↗</a>
+    </nav>
 
-  <!-- Projects Section -->
-  <section class="projects">
-    <div class="project-tile">
-      <img src="images/djavu.png" alt="djavu">
-      <div class="tile-overlay"></div>
-      <div class="pill"><span>djavu</span></div>
-    </div>
-    <div class="project-tile">
-      <img src="images/wirun.png" alt="wirun">
-      <div class="tile-overlay"></div>
-      <div class="pill"><span>wirun</span></div>
-    </div>
-    <div class="project-tile">
-      <img src="images/carvuk.png" alt="carvuk">
-      <div class="tile-overlay"></div>
-      <div class="pill"><span>carvuk</span></div>
-    </div>
-    <div class="project-tile">
-      <img src="images/moda.png" alt="moda">
-      <div class="tile-overlay"></div>
-      <div class="pill"><span>moda</span></div>
-    </div>
-    <!-- Add more project tiles as needed -->
-  </section>
+    <!-- Hero Section with SVGs -->
+    <section class="hero">
+      <div class="svg-container text">
+        <img src="svg/text.svg" alt="Multidisciplinary designer text">
+      </div>
+      <div class="svg-container hand">
+        <img src="svg/hand.svg" alt="Hand illustration">
+      </div>
+      <div class="svg-container contact">
+        <a href="mailto:9vicente.venegas@gmail.com">
+          <img src="svg/contact.svg" alt="Contact illustration">
+        </a>
+      </div>
+      <div class="svg-container pc">
+        <img src="svg/pc.svg" alt="Computer illustration">
+      </div>
+      <div class="svg-container down">
+        <img src="svg/down.svg" alt="Down arrow">
+      </div>
+    </section>
 
-  <main class="container">
-    <!-- Rest of your content goes here, structured within the responsive grid -->
+    <!-- Projects Section -->
+    <section class="projects">
+      <div class="project-tile" data-scroll data-scroll-class="reveal">
+        <img src="images/djavu.png" alt="djavu">
+        <div class="tile-overlay"></div>
+        <div class="pill"><span>djavu</span></div>
+      </div>
+      <div class="project-tile" data-scroll data-scroll-class="reveal">
+        <img src="images/wirun.png" alt="wirun">
+        <div class="tile-overlay"></div>
+        <div class="pill"><span>wirun</span></div>
+      </div>
+      <div class="project-tile" data-scroll data-scroll-class="reveal">
+        <img src="images/carvuk.png" alt="carvuk">
+        <div class="tile-overlay"></div>
+        <div class="pill"><span>carvuk</span></div>
+      </div>
+      <div class="project-tile" data-scroll data-scroll-class="reveal">
+        <img src="images/moda.png" alt="moda">
+        <div class="tile-overlay"></div>
+        <div class="pill"><span>moda</span></div>
+      </div>
+      <!-- Add more project tiles as needed -->
+    </section>  
+    
+    
   </main>
+  
+
 
   <!-- Separate JavaScript file -->
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
 </body>
 </html>

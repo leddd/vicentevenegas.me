@@ -744,25 +744,27 @@ body.dark {
 .project-details .pill {
   position: relative; /* reset absolute positioning from generic .pill */
   opacity: 1;         /* ensure pill is visible */
-  grid-column: 1 / span 2; /* Align to the left, spanning 2 columns */
+  grid-column: 1 / span 1; /* Align left, single column */
   background-color: #fff;
   border: 2px solid #000;
   border-radius: 50px;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.5rem;
+  padding: 0.25rem 1rem;
+  font-size: 1.75rem; /* slightly larger text */
   font-weight: 400;
   letter-spacing: var(--font-kerning-nav);
-  margin-bottom: 1rem;
+  width: fit-content; /* size of the text */
+  margin-bottom: 2rem; /* more space before tags */
   margin-top: 0;
   z-index: 1; /* keep above images */
 }
 
 /* Tags */
 .project-details .tags {
-  grid-column: 1 / span 2; /* Align to the left, spanning 2 columns */
+  grid-column: 1 / span 1; /* Align left, single column */
   display: flex;
   flex-direction: column; /* Stack tags vertically */
-  gap: 0rem;
+  gap: 0.25rem;
+  margin-top: 0; /* alignment with images */
 }
 
 .project-details .tag {
@@ -771,18 +773,19 @@ body.dark {
   padding: 0; /* Remove padding */
   font-size: 1rem;
   font-weight: 500; /* Make tags bold */
+  line-height: 1.2; /* tighter spacing */
 }
 
 /* Description Paragraphs */
 .project-details .description {
-  grid-column: 1 / span 2; /* Text occupies first two columns */
+  grid-column: 1 / span 1; /* Text occupies first column */
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.4; /* slightly tighter */
   color: var(--text-color);
 }
 
 .project-details .description p {
-  margin-bottom: 1rem; /* Add spacing between paragraphs */
+  margin-bottom: 0.75rem; /* Smaller spacing between paragraphs */
 }
 
 /* Images on the project details page */

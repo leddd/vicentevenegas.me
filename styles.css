@@ -49,9 +49,10 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   line-height: 1.4;
   background-color: #ffffff;
-  color: #000;
+  color: #000000;
   overflow-x: hidden;
   min-height: 100%;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* === NAVIGATION === */
@@ -66,6 +67,11 @@ body {
   transform: translateY(20px); /* Start slightly below */
   animation: fadeUp 0.8s ease-out forwards; /* Trigger animation */
   animation-delay: 0.3s; /* Optional delay for better timing */
+  position: static;    /* restore default */
+  top: auto;
+  left: auto;
+  width: 100%;         /* keep full width if you like */
+  z-index: auto;       /* or whatever stacking you need */
 }
 
 .nav-item {
@@ -162,7 +168,7 @@ body {
     aspect-ratio: auto;
     height: calc(100vw * 0.25);
     padding: 0 var(--margin);
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -209,14 +215,18 @@ body {
 .hero .svg-container.pc {
   bottom: 8%;
   right: var(--margin);
-  width: clamp(20%, 30%, 40%);
+  width: clamp(25%, 35%, 45%);
 }
 
 .hero .svg-container.down {
-  bottom: 5%;
+  bottom: 4%;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(2%, 2.5%, 3%);
+  width: clamp(2rem, 2.5vw, 3rem); /* Responsive size */
+  cursor: pointer; /* Ensure it shows a pointer cursor */
+  opacity: 1; /* Ensure it is visible */
+  pointer-events: auto; /* Enable clickability */
+  transition: opacity 0.5s ease; /* Smooth fade effect */
 }
 
 @media (max-width: 1024px) {
@@ -245,12 +255,12 @@ body {
 @media (max-width: 600px) {
   .hero .svg-container.text {
     top: 13%;
-    width: clamp(70%, 75%, 80%);
+    width: clamp(95%, 95%, 95%);
   }
   .hero .svg-container.hand {
-    top: 40%;
-    left: calc(var(--margin) + 6%);
-    width: clamp(9%, 11%, 13%);
+    top: 46%;
+    left: calc(var(--margin) + 8%);
+    width: clamp(13%, 13%, 13%);
   }
   .hero .svg-container.contact,
   .hero .svg-container.pc {
@@ -303,10 +313,10 @@ body {
 .hero .svg-container .wipe-reveal {
   position: absolute;
   inset: 0;
-  background: #fff; /* match hero background */
+  background: #fff; /* White wipe effect */
   z-index: 2;
   transform: translateX(0);
-  transition: transform 1s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); /* Match duration with JS */
   pointer-events: none;
 }
 
@@ -506,6 +516,19 @@ body {
   }
 }
 
+/* Down arrow at the top of the footer */
+.footer .svg-container.down {
+  position: absolute;
+  top: 2rem; /* Adjust distance from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(2rem, 2.5vw, 3rem); /* Responsive size */
+  cursor: default; /* Change cursor to default */
+  pointer-events: none; /* Disable clickability */
+  opacity: 1; /* Ensure it is visible */
+  transition: opacity 0.5s ease; /* Smooth fade effect */
+}
+
 /* Locomotive Scroll styles */
 .locomotive-scroll {
   position: fixed;
@@ -581,3 +604,180 @@ body:hover #custom-cursor {
   opacity: 1;
 }
 
+/* empty footer, full viewport height */
+.footer {
+  height: 100vh;
+  position: relative; /* ensure footer can position absolute children */
+}
+
+/* dark mode when footer is visible */
+body.dark {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.footer .svg-container {
+  position: absolute;
+  background: transparent;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.footer .svg-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Let’s talk SVG */
+.footer .svg-container.talk-footer {
+  top: 19%;
+  left: var(--margin);
+  width: clamp(30%, 30%, 30%);
+  z-index: 3;
+}
+
+
+
+/* Hand wave SVG */
+.footer .svg-container.hand-footer {
+  top: 43%;
+  left: calc(var(--margin) + 25%);
+  width: clamp(10%, 10%, 10%);
+  z-index: 2;
+}
+
+
+/* Contact text block */
+.footer-contact-text {
+  position: absolute;
+  top: 34%;
+  left: var(--margin);
+  font-size: clamp(1rem, 2vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #ffffff; /* Ensure "contact me at" is always white */
+  letter-spacing: var(--font-kerning-nav); /* Match navbar tracking */
+  z-index: 1;
+}
+
+.footer-contact-text a {
+  color: #ffffff; /* Ensure the email link is also white */
+  text-decoration: underline;
+  font-weight: 400;
+  letter-spacing: var(--font-kerning-nav); /* Match navbar tracking */
+  transition: color 0.3s ease;
+}
+
+.footer-contact-text a:hover {
+  color: #cccccc; /* Slightly dim the link on hover */
+}
+
+/* Social icons */
+.footer-social {
+  position: absolute;
+  bottom: 5%;
+  right: var(--margin);
+  display: flex;
+  gap: var(--gutter);
+}
+
+.footer-social img {
+  width: clamp(3rem, 3vw, 3.5rem);
+  height: auto;
+}
+
+/* Footer Section */
+.footer {
+  position: relative; /* Ensure footer can position absolute children */
+  width: 100%;
+  height: 100vh; /* Default height for 16:9 aspect ratio */
+  overflow: hidden;
+  padding: 0 var(--margin);
+  background: transparent;
+}
+
+/* Adjust footer height for different aspect ratios */
+@media (max-width: 1200px) {
+  .footer {
+    height: calc(100vw * 0.5); /* Adjust height for narrower desktop widths */
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    height: calc(100vw * 0.5); /* Adjust height for mobile resolutions */
+    padding: 0 var(--margin) 1rem;
+  }
+  /* Move contact text lower */
+  .footer-contact-text {
+    top: 40%; /* Adjust position to move it lower */
+  }
+
+  /* Make "Let's Talk" SVG larger on mobile */
+  .footer .svg-container.talk-footer {
+    top: 18%;
+    width: clamp(40%, 45%, 50%); /* Increase size for mobile */
+  }
+  /* Hide hand wave SVG on mobile */
+  .footer .svg-container.hand-footer {
+    display: none;
+  }
+
+  /* Make social icons smaller on mobile */
+  .footer-social img {
+    width: clamp(2rem, 2.5vw, 2.75rem); /* Smaller size for mobile */
+    height: auto;
+  }
+
+}
+
+/* Project Page Styles */
+.project-details {
+  padding: 2rem var(--margin);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Use a 6-column grid */
+  gap: 1rem;
+  text-align: left; /* Align content to the left */
+}
+
+/* Project Pill */
+.project-details .pill {
+  grid-column: 1 / span 2; /* Align to the left, spanning 2 columns */
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: var(--font-kerning-nav);
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+/* Tags */
+.project-details .tags {
+  grid-column: 1 / span 2; /* Align to the left, spanning 2 columns */
+  display: flex;
+  flex-direction: column; /* Stack tags vertically */
+  gap: 0rem;
+}
+
+.project-details .tag {
+  background: none; /* Remove background */
+  color: gray; /* Set text color to gray */
+  padding: 0; /* Remove padding */
+  font-size: 1rem;
+  font-weight: 500; /* Make tags bold */
+}
+
+/* Description Paragraphs */
+.project-details .description {
+  grid-column: 1 / span 1; /* Spanning only one column */
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.project-details .description p {
+  margin-bottom: 1rem; /* Add spacing between paragraphs */
+}

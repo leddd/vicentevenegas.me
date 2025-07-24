@@ -9,18 +9,20 @@
 
 </head>
 <body>
-  <div id="custom-cursor"></div>
   <main data-scroll-container>
 
-    <nav class="navbar">
-      <!-- Using <a> tags for better semantics and tab navigation -->
-      <a href="#" class="nav-item nav-left" id="scroll-to-projects">vicente venegas*</a>
-      <a href="#about" class="nav-item nav-about">about↗</a>
-      <a href="#contact" class="nav-item nav-contact">contact↗</a>
-    </nav>
+    <section data-scroll-section>
+      <nav class="navbar">
+        <!-- Using <a> tags for better semantics and tab navigation -->
+        <a href="#" class="nav-item nav-left" id="scroll-to-projects">vicente venegas*</a>
+        <a href="#about" class="nav-item nav-about">about↗</a>
+        <a href="#" id="scroll-to-footer" class="nav-item nav-contact">contact↗</a>
 
-    <!-- Hero Section with SVGs -->
-    <section class="hero">
+      </nav>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" data-scroll-section>
       <div class="svg-container text">
         <img src="svg/text.svg" alt="Multidisciplinary designer text">
       </div>
@@ -28,20 +30,20 @@
         <img src="svg/hand.svg" alt="Hand illustration">
       </div>
       <div class="svg-container contact">
-        <a href="mailto:9vicente.venegas@gmail.com">
+        <a href="mailto:9vicente.venegas@gmail.com" target="_blank">
           <img src="svg/contact.svg" alt="Contact illustration">
         </a>
       </div>
       <div class="svg-container pc">
         <img src="svg/pc.svg" alt="Computer illustration">
       </div>
-      <div class="svg-container down">
+      <div class="svg-container down" id="scroll-down">
         <img src="svg/down.svg" alt="Down arrow">
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="projects">
+    <section class="projects" data-scroll-section>
       <div class="project-tile" data-scroll data-scroll-class="reveal">
         <img src="images/djavu.png" alt="djavu">
         <div class="tile-overlay"></div>
@@ -63,16 +65,48 @@
         <div class="pill"><span>moda</span></div>
       </div>
       <!-- Add more project tiles as needed -->
-    </section>  
-    
-    
+    </section>  <!-- end .projects -->
+
+    <!-- Footer Section -->
+    <footer class="footer" data-scroll-section>
+
+      <!-- SVG Containers for Footer (consistent with hero logic) -->
+      <div class="svg-container talk-footer">
+        <img src="svg/lets_talk_w.svg" alt="Let's talk">
+      </div>
+
+      <div class="svg-container hand-footer">
+        <img src="svg/hand_w.svg" alt="Hand wave">
+      </div>
+
+      <!-- Contact Text Block -->
+      <div class="footer-contact-text">
+        <p>contact me at</p>
+        <p>
+          <a href="mailto:9vicente.venegas@gmail.com" target="_blank" rel="noopener noreferrer">
+            9vicente.venegas@gmail.com
+          </a>
+        </p>
+      </div>
+
+      <!-- Social links at bottom-right -->
+      <div class="footer-social">
+        <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+          <img src="svg/ig.svg" alt="Instagram">
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+          <img src="svg/linkedin.svg" alt="LinkedIn">
+        </a>
+      </div>
+
+      <!-- Down arrow at the top of the footer -->
+      <div class="svg-container down" id="footer-down">
+        <img src="svg/down.svg" alt="Scroll down">
+      </div>
+    </footer>
+
   </main>
-  
-
-
-  <!-- Separate JavaScript file -->
-  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

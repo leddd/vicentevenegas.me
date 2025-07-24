@@ -1,49 +1,82 @@
+// script.js
 window.addEventListener('DOMContentLoaded', () => {
+  // 1) Grab the scroll container and bail if missing
+  const container = document.querySelector('[data-scroll-container]');
+  if (!container) return;
+
+  // 2) Initialize Locomotive Scroll for smooth scrolling
   const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
+    el: container,
     smooth: true,
     lerp: 0.08,
     getDirection: true,
   });
 
-  // Scroll to projects section when clicking on "vicente venegas*"
+  // 3) Cache frequently used elements
+  const projectsEl          = document.querySelector('.projects');
+  const footer              = document.querySelector('.footer');
   const scrollToProjectsBtn = document.getElementById('scroll-to-projects');
-  scrollToProjectsBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    scroll.scrollTo(document.querySelector('.projects'), {
-      offset: -20, // Adjust for navbar height if needed
-      duration: 1000,
-      easing: [0.25, 0.0, 0.35, 1.0],
-    });
-  });
+  const scrollDownArrow     = document.getElementById('scroll-down');
+  const scrollToFooterBtn   = document.getElementById('scroll-to-footer');
+  const cursor              = document.getElementById('custom-cursor');
+  const heroSVGs            = document.querySelectorAll('.hero .svg-container');
+  const footerDownArrow     = document.getElementById('footer-down');
 
-  // Ensure .project-tile elements have the correct attributes
-  const projectTiles = document.querySelectorAll('.project-tile');
-  projectTiles.forEach((tile) => {
+  const SNAP_SETTINGS = {
+    duration: 500,
+    easing: [0.25, 0, 0.35, 1],
+  };
+
+  let isManuallyScrollingToFooter = false;
+
+  // Scroll helpers
+  function scrollToProjects(e) {
+    e.preventDefault();
+    if (!projectsEl || isManuallyScrollingToFooter) return;
+    scroll.scrollTo(projectsEl, {
+      offset: -20,
+      ...SNAP_SETTINGS,
+    });
+  }
+
+  function scrollToFooter(e) {
+    e.preventDefault();
+    if (!footer) return;
+    isManuallyScrollingToFooter = true;
+    scroll.scrollTo(footer, {
+      offset: 0,
+      ...SNAP_SETTINGS,
+      callback: () => {
+        setTimeout(() => isManuallyScrollingToFooter = false, 300);
+      },
+    });
+  }
+
+  // Bind button clicks
+  scrollToProjectsBtn?.addEventListener('click', scrollToProjects);
+  scrollDownArrow?.addEventListener('click', scrollToProjects);
+  scrollToFooterBtn?.addEventListener('click', scrollToFooter);
+
+  // Project tile animation class
+  document.querySelectorAll('.project-tile').forEach(tile => {
     tile.setAttribute('data-scroll', '');
     tile.setAttribute('data-scroll-class', 'reveal');
   });
 
-  // Animate hero SVGs
-  const svgContainers = document.querySelectorAll('.hero .svg-container');
-  svgContainers.forEach((el) => {
-    el.style.opacity = '1';
-    void el.offsetWidth;
-    el.classList.add('animate-in');
-  });
-
-  // Wipe reveal effect
-  const wipeTargets = document.querySelectorAll('.hero .svg-container.text, .hero .svg-container.hand, .hero .svg-container.pc');
-  wipeTargets.forEach((container) => {
+  // Wipe reveal animation for hero SVGs
+  document.querySelectorAll('.hero .svg-container.text, .hero .svg-container.hand, .hero .svg-container.pc').forEach((container, i) => {
     if (!container.querySelector('.wipe-reveal')) {
       const wipe = document.createElement('div');
       wipe.className = 'wipe-reveal';
       if (container.classList.contains('pc')) wipe.classList.add('right-to-left');
       container.appendChild(wipe);
+
+      // Remove the wipe element after the animation is complete
+      setTimeout(() => {
+        wipe.remove(); // Remove the wipe element from the DOM
+      }, 1200); // Match the duration of the wipe animation (e.g., 1.2s)
     }
     container.classList.remove('revealed');
-  });
-  wipeTargets.forEach((container, i) => {
     setTimeout(() => container.classList.add('revealed'), 200 + i * 150);
   });
 
@@ -51,75 +84,57 @@ window.addEventListener('DOMContentLoaded', () => {
   const contactSVG = document.querySelector('.hero .svg-container.contact');
   if (contactSVG) {
     contactSVG.style.opacity = '0';
-    contactSVG.style.transform = 'translateY(40px) rotate(0deg)';
-
+    contactSVG.style.transform = 'translateY(40px)';
     setTimeout(() => {
-      contactSVG.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+      contactSVG.style.transition = 'opacity 1s, transform 1s';
       contactSVG.style.opacity = '1';
-      contactSVG.style.transform = 'translateY(0) rotate(0deg)';
-
-      let rotation = 0;
+      contactSVG.style.transform = 'translateY(0)';
+      let rot = 0;
       setInterval(() => {
-        rotation += 1;
-        contactSVG.style.transform = `translateY(0) rotate(${rotation}deg)`;
+        rot++;
+        contactSVG.style.transform = `translateY(0) rotate(${rot}deg)`;
       }, 150);
     }, 750);
   }
 
-  // Fade in/out arrow on scroll
-  const downArrow = document.querySelector('.hero .svg-container.down');
-  if (downArrow) {
-    downArrow.style.opacity = '0';
-    downArrow.style.transition = 'opacity 1s ease-out';
+  // Fade in and out down arrow based on scroll position
+  scroll.on('scroll', ({ scroll: { y } }) => {
+    const vh = window.innerHeight;
+    const fY = footer?.offsetTop ?? Infinity;
+    const fH = footer?.offsetHeight ?? 0;
 
-    setTimeout(() => {
-      downArrow.style.opacity = '1';
-    }, 1000);
+    // Update hero arrow opacity
+    if (scrollDownArrow) {
+      scrollDownArrow.style.opacity = Math.max(0, 1 - y / (vh / 2));
+    }
 
-    scroll.on('scroll', (obj) => {
-      const scrollY = obj.scroll.y;
-      const viewportHeight = window.innerHeight;
-      const opacity = Math.max(0, 1 - scrollY / (viewportHeight / 2));
-      downArrow.style.opacity = opacity;
-    });
+    // Toggle dark mode based on footer visibility
+    if (footer) {
+      const bottom = y + vh;
+      document.body.classList.toggle('dark', bottom >= fY + fH * 0.4);
+    }
+
+    // Fade in footer arrow
+    if (footerDownArrow) {
+      const bottom = y + vh;
+      const fadeThreshold = fY + vh * 0.1;
+      footerDownArrow.style.opacity = bottom >= fadeThreshold ? '1' : '0';
+    }
+  });
+
+  // Initial fade in for hero arrow
+  if (scrollDownArrow) {
+    scrollDownArrow.style.opacity = '0';
+    scrollDownArrow.style.transition = 'opacity 0.3s ease-out';
+    setTimeout(() => (scrollDownArrow.style.opacity = '1'), 1000);
   }
 
-  // Smooth scroll snap to .projects when scrolling slightly
-  let hasSnapped = false;
-  scroll.on('scroll', (obj) => {
-    const scrollY = obj.scroll.y;
-
-    if (scrollY > 80 && !hasSnapped) {
-      hasSnapped = true;
-      scroll.scrollTo(document.querySelector('.projects'), {
-        offset: -20,
-        duration: 800,
-        easing: [0.25, 0.0, 0.35, 1.0],
-      });
-    }
-
-    if (scrollY < 60) {
-      hasSnapped = false;
-    }
+  // Custom cursor
+  window.addEventListener('mousemove', e => {
+    cursor?.style.setProperty('transform', `translate(${e.clientX}px, ${e.clientY}px)`);
   });
-
-  const cursor = document.getElementById('custom-cursor');
-  const heroSVGs = document.querySelectorAll('.hero .svg-container');
-
-  // Move the cursor with the mouse
-  window.addEventListener('mousemove', (e) => {
-    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  heroSVGs.forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+    el.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
   });
-
-  // Show/hide cursor on hover over .svg-container
-  heroSVGs.forEach((el) => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.opacity = '1';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '0';
-    });
-  });
-
-  
 });

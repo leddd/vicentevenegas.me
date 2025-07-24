@@ -742,6 +742,8 @@ body.dark {
 
 /* Project Pill */
 .project-details .pill {
+  position: relative; /* reset absolute positioning from generic .pill */
+  opacity: 1;         /* ensure pill is visible */
   grid-column: 1 / span 2; /* Align to the left, spanning 2 columns */
   background-color: #fff;
   border: 2px solid #000;
@@ -752,6 +754,7 @@ body.dark {
   letter-spacing: var(--font-kerning-nav);
   margin-bottom: 1rem;
   margin-top: 0;
+  z-index: 1; /* keep above images */
 }
 
 /* Tags */
@@ -772,7 +775,7 @@ body.dark {
 
 /* Description Paragraphs */
 .project-details .description {
-  grid-column: 1 / span 1; /* Spanning only one column */
+  grid-column: 1 / span 2; /* Text occupies first two columns */
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-color);
@@ -780,4 +783,23 @@ body.dark {
 
 .project-details .description p {
   margin-bottom: 1rem; /* Add spacing between paragraphs */
+}
+
+/* Images on the project details page */
+.project-details img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-details .main-image {
+  grid-column: 3 / span 4; /* columns 3 to 6 */
+}
+
+.project-details .sub-image-1 {
+  grid-column: 3 / span 2; /* columns 3 to 4 */
+}
+
+.project-details .sub-image-2 {
+  grid-column: 5 / span 2; /* columns 5 to 6 */
 }

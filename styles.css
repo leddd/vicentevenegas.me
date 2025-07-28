@@ -734,7 +734,7 @@ body.dark {
 
 /* Project Page Styles */
 .project-details {
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding: 2rem var(--margin);
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* Use a 6-column grid */

@@ -31,12 +31,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Scroll helpers
   function scrollToProjects(e) {
-    e.preventDefault();
-    if (!projectsEl || isManuallyScrollingToFooter) return;
-    scroll.scrollTo(projectsEl, {
-      offset: -20,
-      ...SNAP_SETTINGS,
-    });
+    if (projectsEl) {
+      e.preventDefault();
+      if (isManuallyScrollingToFooter) return;
+      scroll.scrollTo(projectsEl, {
+        offset: -20,
+        ...SNAP_SETTINGS,
+      });
+    }
   }
 
   function scrollToFooter(e) {
@@ -61,6 +63,13 @@ window.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.project-tile').forEach(tile => {
     tile.setAttribute('data-scroll', '');
     tile.setAttribute('data-scroll-class', 'reveal');
+  });
+
+  // Apply animation to project detail elements
+  document.querySelectorAll('.project-details .pill, .project-details .description').forEach(el => {
+    el.classList.add('animate');
+    el.setAttribute('data-scroll', '');
+    el.setAttribute('data-scroll-class', 'reveal');
   });
 
   // Wipe reveal animation for hero SVGs
@@ -137,4 +146,13 @@ window.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
     el.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
   });
+
+  // If page loaded with a hash, scroll to that section
+  const initialHash = window.location.hash;
+  if (initialHash) {
+    const target = document.querySelector(initialHash);
+    if (target) {
+      scroll.scrollTo(target, { offset: -20, ...SNAP_SETTINGS });
+    }
+  }
 });

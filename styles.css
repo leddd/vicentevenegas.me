@@ -24,7 +24,7 @@
 @media (max-width: 768px) {
   :root {
     --margin: 1.5rem;
-    --gutter: 0.625rem;
+    --gutter: 0.75rem; /* slightly larger gutter on tablet */
   }
 }
 @media (max-width: 480px) {
@@ -53,6 +53,12 @@ body {
   overflow-x: hidden;
   min-height: 100%;
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Ensure links inherit text color to avoid default blue */
+a,
+a:visited {
+  color: inherit;
 }
 
 /* === NAVIGATION === */
@@ -789,6 +795,20 @@ body.dark {
   color: var(--text-color);
 }
 
+@media (max-width: 1024px) {
+  .project-details .tag,
+  .project-details .description {
+    font-size: 0.875rem; /* slightly smaller text on tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .project-details .tag,
+  .project-details .description {
+    font-size: 0.75rem; /* slightly smaller text on phone */
+  }
+}
+
 .project-details .description p {
   margin-bottom: 0.75rem; /* Smaller spacing between paragraphs */
 }
@@ -810,6 +830,23 @@ body.dark {
 
 .project-details .sub-image-2 {
   grid-column: 5 / span 2; /* columns 5 to 6 */
+}
+
+/* Next project link */
+.project-details .next-project {
+  grid-column: 6 / span 1;
+  justify-self: end;
+  align-self: end;
+  font-size: var(--font-size-nav);
+  letter-spacing: var(--font-kerning-nav);
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 600px) {
+  .project-details .next-project {
+    grid-column: 4 / span 1; /* last column in mobile layout */
+  }
 }
 
 /* Tablet layout adjustments */

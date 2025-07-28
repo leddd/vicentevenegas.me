@@ -344,6 +344,7 @@ body {
 
 .project-tile {
   position: relative;
+  display: block;
   grid-column: span 3;
   aspect-ratio: 4 / 3;
   overflow: hidden;
@@ -733,7 +734,7 @@ body.dark {
 
 /* Project Page Styles */
 .project-details {
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding: 2rem var(--margin);
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* Use a 6-column grid */
@@ -809,4 +810,26 @@ body.dark {
 
 .project-details .sub-image-2 {
   grid-column: 5 / span 2; /* columns 5 to 6 */
+}
+
+/* Tablet layout adjustments */
+@media (max-width: 1024px) {
+  .project-details .description {
+    grid-column: 1 / span 2; /* allow text to span columns 1-2 */
+  }
+}
+
+/* Mobile layout: switch to four columns and stack content */
+@media (max-width: 600px) {
+  .project-details {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .project-details .pill,
+  .project-details .tags,
+  .project-details .description,
+  .project-details .main-image,
+  .project-details .sub-image-1,
+  .project-details .sub-image-2 {
+    grid-column: 1 / span 4;
+  }
 }

@@ -834,18 +834,19 @@ body.dark {
 
 /* Next project link */
 .project-details .next-project {
-  grid-column: 6 / span 1;
-  justify-self: end;
+  grid-column: 1 / span 2;
+  justify-self: start;
   align-self: end;
   font-size: var(--font-size-nav);
   letter-spacing: var(--font-kerning-nav);
   text-decoration: none;
   color: inherit;
+  margin-top: 1rem; /* Space above next project link */
 }
 
 @media (max-width: 600px) {
   .project-details .next-project {
-    grid-column: 4 / span 1; /* last column in mobile layout */
+    grid-column: 1 / span 2; /* last column in mobile layout */
   }
 }
 

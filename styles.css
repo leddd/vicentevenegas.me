@@ -877,3 +877,71 @@ body.dark {
     grid-column: 1 / span 4;
   }
 }
+
+/* === ABOUT PAGE === */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gutter);
+  padding: 2rem var(--margin);
+}
+
+.about-summary {
+  grid-column: 1 / span 2;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.about-experience {
+  grid-column: 1 / span 2;
+}
+
+.about-education {
+  grid-column: 3 / span 2;
+}
+
+.about-experience h2,
+.about-education h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.about-entry {
+  margin-bottom: 1rem;
+}
+
+.about-date {
+  color: gray;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-summary {
+    grid-column: 1 / span 2;
+  }
+  .about-experience {
+    grid-column: 1 / span 2;
+  }
+  .about-education {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+  .about-summary {
+    grid-column: 1 / span 1;
+  }
+  .about-experience,
+  .about-education {
+    grid-column: 1 / span 1;
+  }
+}

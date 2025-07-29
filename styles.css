@@ -910,12 +910,12 @@ body.dark {
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .about-container {
     grid-template-columns: repeat(2, 1fr);
   }
   .about-summary {
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 4;
   }
   .about-experience {
     grid-column: 1 / span 2;
@@ -930,7 +930,7 @@ body.dark {
     grid-template-columns: 1fr;
   }
   .about-summary {
-    grid-column: 1 / span 1;
+    grid-column: 1 / span 4;
   }
   .about-experience,
   .about-education {

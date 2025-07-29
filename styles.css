@@ -800,12 +800,18 @@ body.dark {
   .project-details .description {
     font-size: 0.875rem; /* slightly smaller text on tablet */
   }
+  .project-details {
+  margin-top: 0.5rem;
+  }
 }
 
 @media (max-width: 600px) {
   .project-details .tag,
   .project-details .description {
-    font-size: 0.75rem; /* slightly smaller text on phone */
+    font-size: 0.875rem; /* slightly smaller text on phone */
+  }
+  .project-details {
+  margin-top: 0rem;
   }
 }
 

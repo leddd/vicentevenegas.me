@@ -679,7 +679,7 @@ body.dark {
 /* Social icons */
 .footer-social {
   position: absolute;
-  bottom: 5%;
+  bottom: 4%;
   right: var(--margin);
   display: flex;
   gap: var(--gutter);

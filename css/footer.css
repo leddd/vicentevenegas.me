@@ -52,6 +52,29 @@ body.dark {
   z-index: 2;
 }
 
+/* contact page stacked elements */
+.contact-page .contact-block {
+  position: absolute;
+  top: var(--contact-top);
+  left: var(--margin);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gutter);
+}
+
+.contact-page .contact-block .talk-footer,
+.contact-page .contact-block .hand-footer,
+.contact-page .contact-block .footer-contact-text {
+  position: static;
+  top: auto;
+  left: auto;
+}
+
+.contact-page .contact-block .hand-footer {
+  align-self: flex-end;
+}
+
 
 /* Contact text block */
 .footer-contact-text {

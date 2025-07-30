@@ -64,15 +64,10 @@ body.dark {
 }
 
 .contact-page .contact-block .talk-footer,
-.contact-page .contact-block .hand-footer,
 .contact-page .contact-block .footer-contact-text {
   position: static;
   top: auto;
   left: auto;
-}
-
-.contact-page .contact-block .hand-footer {
-  align-self: flex-end;
 }
 
 

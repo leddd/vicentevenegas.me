@@ -21,6 +21,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const cursor              = document.getElementById('custom-cursor');
   const heroSVGs            = document.querySelectorAll('.hero .svg-container');
   const footerDownArrow     = document.getElementById('footer-down');
+  const talkFooter          = document.querySelector('.contact-block .talk-footer');
+  const contactText         = document.querySelector('.contact-block .footer-contact-text');
+  const handFooter          = document.querySelector('.contact-block .hand-footer');
 
   const SNAP_SETTINGS = {
     duration: 500,
@@ -28,6 +31,19 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   let isManuallyScrollingToFooter = false;
+
+  function layoutContact() {
+    if (!talkFooter || !contactText || !handFooter) return;
+    const width = contactText.offsetWidth;
+    talkFooter.style.width = `${width}px`;
+    const height = contactText.offsetHeight;
+    handFooter.style.position = 'absolute';
+    handFooter.style.left = `${width}px`;
+    handFooter.style.top = `${height}px`;
+  }
+
+  layoutContact();
+  window.addEventListener('resize', layoutContact);
 
   // Scroll helpers
   function scrollToProjects(e) {

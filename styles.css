@@ -637,9 +637,9 @@ body.dark {
 
 /* Let’s talk SVG */
 .footer .svg-container.talk-footer {
-  top: 19%;
+  top: 23%;
   left: var(--margin);
-  width: clamp(30%, 30%, 30%);
+  width: clamp(25%, 25%, 25%);
   z-index: 3;
 }
 
@@ -647,9 +647,9 @@ body.dark {
 
 /* Hand wave SVG */
 .footer .svg-container.hand-footer {
-  top: 43%;
-  left: calc(var(--margin) + 25%);
-  width: clamp(10%, 10%, 10%);
+  top: 42%;
+  left: calc(var(--margin) + 21%);
+  width: clamp(9%, 9%, 9%);
   z-index: 2;
 }
 
@@ -657,11 +657,11 @@ body.dark {
 /* Contact text block */
 .footer-contact-text {
   position: absolute;
-  top: 34%;
+  top: 35%;
   left: var(--margin);
-  font-size: clamp(1rem, 2vw, 4rem);
+  font-size: var(--font-size-nav);
   font-weight: 300;
-  line-height: 1.2;
+  line-height: 1;
   color: #ffffff; /* Ensure "contact me at" is always white */
   letter-spacing: var(--font-kerning-nav); /* Match navbar tracking */
   z-index: 1;
@@ -670,14 +670,11 @@ body.dark {
 .footer-contact-text a {
   color: #ffffff; /* Ensure the email link is also white */
   text-decoration: underline;
-  font-weight: 400;
+  font-weight: 400; /* Slightly bolder for emphasis */
   letter-spacing: var(--font-kerning-nav); /* Match navbar tracking */
   transition: color 0.3s ease;
 }
 
-.footer-contact-text a:hover {
-  color: #cccccc; /* Slightly dim the link on hover */
-}
 
 /* Social icons */
 .footer-social {

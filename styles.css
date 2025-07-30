@@ -637,7 +637,7 @@ body.dark {
 
 /* Let’s talk SVG */
 .footer .svg-container.talk-footer {
-  top: 22%;
+  top: calc(var(--contact-top) + var(--talk-offset));
   left: var(--margin);
   width: clamp(25%, 25%, 25%);
   z-index: 3;
@@ -647,7 +647,7 @@ body.dark {
 
 /* Hand wave SVG */
 .footer .svg-container.hand-footer {
-  top: 42%;
+  top: calc(var(--contact-top) + var(--hand-offset));
   left: calc(var(--margin) + 21%);
   width: clamp(9%, 9%, 9%);
   z-index: 2;
@@ -657,7 +657,7 @@ body.dark {
 /* Contact text block */
 .footer-contact-text {
   position: absolute;
-  top: 35%;
+  top: var(--contact-top);
   left: var(--margin);
   font-size: var(--font-size-nav);
   font-weight: 300;
@@ -701,6 +701,11 @@ body.dark {
 }
 
 /* When the footer is the only main content (contact page) subtract navbar height */
+.contact-page {
+  --contact-top: 35%;
+  --talk-offset: -13%;
+  --hand-offset: 7%;
+}
 .contact-page .footer {
   height: calc(100vh - var(--navbar-height));
 }
@@ -723,14 +728,12 @@ body.dark {
   .contact-page .footer {
     height: calc(100vw * 0.5 - var(--navbar-height));
   }
-  /* Move contact text lower */
-  .footer-contact-text {
-    top: 40%; /* Adjust position to move it lower */
+  .contact-page {
+    --contact-top: 40%;
+    --talk-offset: -22%;
   }
-
   /* Make "Let's Talk" SVG larger on mobile */
   .footer .svg-container.talk-footer {
-    top: 18%;
     width: clamp(40%, 45%, 50%); /* Increase size for mobile */
   }
   /* Hide hand wave SVG on mobile */
@@ -738,12 +741,25 @@ body.dark {
     display: none;
   }
 
+
   /* Make social icons smaller on mobile */
   .footer-social img {
     width: clamp(2rem, 2.5vw, 2.75rem); /* Smaller size for mobile */
     height: auto;
   }
 
+}
+
+@media (orientation: portrait) {
+  .contact-page {
+    --contact-top: 42%;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .contact-page {
+    --contact-top: 30%;
+  }
 }
 
 /* Project Page Styles */

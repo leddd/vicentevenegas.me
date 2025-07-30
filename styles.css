@@ -621,8 +621,9 @@ body.dark {
   color: #ffffff;
 }
 
+
 .footer .svg-container {
-  position: absolute;
+  position: relative;
   background: transparent;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
@@ -633,11 +634,19 @@ body.dark {
   height: auto;
 }
 
+/* Container grouping the talk, text and hand elements */
+.footer-contact-group {
+  position: absolute;
+  top: 35%;
+  left: var(--margin);
+  display: flex;
+  align-items: flex-end;
+  gap: var(--gutter);
+}
+
 /* Let’s talk SVG */
 .footer .svg-container.talk-footer {
-  top: 22%;
-  left: var(--margin);
-  width: clamp(25%, 25%, 25%);
+  width: clamp(25%, 25vw, 25%);
   z-index: 3;
 }
 
@@ -645,18 +654,14 @@ body.dark {
 
 /* Hand wave SVG */
 .footer .svg-container.hand-footer {
-  top: 42%;
-  left: calc(var(--margin) + 21%);
-  width: clamp(9%, 9%, 9%);
+  width: clamp(9%, 9vw, 9%);
   z-index: 2;
 }
 
 
 /* Contact text block */
 .footer-contact-text {
-  position: absolute;
-  top: 35%;
-  left: var(--margin);
+  position: relative;
   font-size: var(--font-size-nav);
   font-weight: 300;
   line-height: 1;
@@ -721,14 +726,15 @@ body.dark {
   .contact-page .footer {
     height: calc(100vw * 0.5 - var(--navbar-height));
   }
-  /* Move contact text lower */
-  .footer-contact-text {
-    top: 40%; /* Adjust position to move it lower */
+  .footer-contact-group {
+    top: 40%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
   /* Make "Let's Talk" SVG larger on mobile */
   .footer .svg-container.talk-footer {
-    top: 18%;
     width: clamp(40%, 45%, 50%); /* Increase size for mobile */
   }
   /* Hide hand wave SVG on mobile */
@@ -742,6 +748,14 @@ body.dark {
     height: auto;
   }
 
+}
+
+@media (orientation: portrait) and (min-width: 601px) {
+  .footer-contact-group {
+    top: 45%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* Project Page Styles */

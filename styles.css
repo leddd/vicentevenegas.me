@@ -274,71 +274,7 @@ a:visited {
   }
 }
 
-/* === HERO SVG ANIMATIONS REMOVED === */
-.hero .svg-container,
-.hero .svg-container.text,
-.hero .svg-container.hand,
-.hero .svg-container.pc,
-.hero .svg-container.down,
-.hero .svg-container.contact {
-  opacity: 1;
-  animation: none;
-  animation-name: none;
-  animation-delay: 0s;
-  animation-duration: 0s;
-  animation-timing-function: initial;
-  animation-fill-mode: none;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-}
-
-/* === HERO SVG REVEAL (WIPE) ANIMATION FOR TEXT AND HAND - Z-INDEX FIX (HAND BELOW TEXT) === */
-.hero .svg-container.text {
-  position: relative;
-  overflow: hidden;
-  z-index: 3;
-}
-.hero .svg-container.hand {
-  position: absolute;
-  overflow: visible;
-  z-index: 2;
-}
-.hero .svg-container.hand .wipe-reveal {
-  z-index: 2;
-}
-.hero .svg-container.text .wipe-reveal {
-  z-index: 3;
-}
-
-/* === HERO SVG REVEAL (WIPE) ANIMATION FOR TEXT AND HAND === */
-.hero .svg-container.text,
-.hero .svg-container.hand {
-  overflow: hidden;
-}
-
-.hero .svg-container .wipe-reveal {
-  position: absolute;
-  inset: 0;
-  background: #fff; /* White wipe effect */
-  z-index: 2;
-  transform: translateX(0);
-  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); /* Match duration with JS */
-  pointer-events: none;
-}
-
-.hero .svg-container.revealed .wipe-reveal {
-  transform: translateX(100%);
-}
-
-/* Fix hand SVG position after adding wipe reveal overlay */
-.hero .svg-container.hand {
-  position: absolute; /* restore absolute positioning */
-  overflow: visible;  /* allow overlay to be hidden, but keep SVG positioned */
-}
-.hero .svg-container.hand .wipe-reveal {
-  overflow: hidden;
-  border-radius: inherit;
-}
+/* === Hero wipe animations removed === */
 
 /* === PROJECTS SECTION === */
 .projects {
@@ -590,26 +526,7 @@ a:visited {
   }
 }
 
-#custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1px; /* Slightly larger cursor */
-  height: 1px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  background: rgba(255, 255, 255, 0.3); /* Brighter glow */
-  box-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.4); /* More blur and brightness */
-  mix-blend-mode: screen;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-  opacity: 0;
-}
-
-body:hover #custom-cursor {
-  opacity: 1;
-}
+/* Custom cursor removed */
 
 /* empty footer, full viewport height */
 .footer {

@@ -18,9 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const scrollToProjectsBtn = document.getElementById('scroll-to-projects');
   const scrollDownArrow     = document.getElementById('scroll-down');
   const scrollToFooterBtn   = document.getElementById('scroll-to-footer');
-  const cursor              = document.getElementById('custom-cursor');
-  const heroSVGs            = document.querySelectorAll('.hero .svg-container');
-  const footerDownArrow     = document.getElementById('footer-down');
+  // Animations removed except smooth scroll and tile reveal
 
   const SNAP_SETTINGS = {
     duration: 500,
@@ -63,78 +61,5 @@ window.addEventListener('DOMContentLoaded', () => {
     tile.setAttribute('data-scroll-class', 'reveal');
   });
 
-  // Wipe reveal animation for hero SVGs
-  document.querySelectorAll('.hero .svg-container.text, .hero .svg-container.hand, .hero .svg-container.pc').forEach((container, i) => {
-    if (!container.querySelector('.wipe-reveal')) {
-      const wipe = document.createElement('div');
-      wipe.className = 'wipe-reveal';
-      if (container.classList.contains('pc')) wipe.classList.add('right-to-left');
-      container.appendChild(wipe);
-
-      // Remove the wipe element after the animation is complete
-      setTimeout(() => {
-        wipe.remove(); // Remove the wipe element from the DOM
-      }, 1200); // Match the duration of the wipe animation (e.g., 1.2s)
-    }
-    container.classList.remove('revealed');
-    setTimeout(() => container.classList.add('revealed'), 200 + i * 150);
-  });
-
-  // Contact SVG animation
-  const contactSVG = document.querySelector('.hero .svg-container.contact');
-  if (contactSVG) {
-    contactSVG.style.opacity = '0';
-    contactSVG.style.transform = 'translateY(40px)';
-    setTimeout(() => {
-      contactSVG.style.transition = 'opacity 1s, transform 1s';
-      contactSVG.style.opacity = '1';
-      contactSVG.style.transform = 'translateY(0)';
-      let rot = 0;
-      setInterval(() => {
-        rot++;
-        contactSVG.style.transform = `translateY(0) rotate(${rot}deg)`;
-      }, 150);
-    }, 750);
-  }
-
-  // Fade in and out down arrow based on scroll position
-  scroll.on('scroll', ({ scroll: { y } }) => {
-    const vh = window.innerHeight;
-    const fY = footer?.offsetTop ?? Infinity;
-    const fH = footer?.offsetHeight ?? 0;
-
-    // Update hero arrow opacity
-    if (scrollDownArrow) {
-      scrollDownArrow.style.opacity = Math.max(0, 1 - y / (vh / 2));
-    }
-
-    // Toggle dark mode based on footer visibility
-    if (footer) {
-      const bottom = y + vh;
-      document.body.classList.toggle('dark', bottom >= fY + fH * 0.4);
-    }
-
-    // Fade in footer arrow
-    if (footerDownArrow) {
-      const bottom = y + vh;
-      const fadeThreshold = fY + vh * 0.1;
-      footerDownArrow.style.opacity = bottom >= fadeThreshold ? '1' : '0';
-    }
-  });
-
-  // Initial fade in for hero arrow
-  if (scrollDownArrow) {
-    scrollDownArrow.style.opacity = '0';
-    scrollDownArrow.style.transition = 'opacity 0.3s ease-out';
-    setTimeout(() => (scrollDownArrow.style.opacity = '1'), 1000);
-  }
-
-  // Custom cursor
-  window.addEventListener('mousemove', e => {
-    cursor?.style.setProperty('transform', `translate(${e.clientX}px, ${e.clientY}px)`);
-  });
-  heroSVGs.forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
-    el.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
-  });
+  // Animations like hero wipe and custom cursor were removed
 });

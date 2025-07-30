@@ -873,24 +873,24 @@ body.dark {
 /* === ABOUT PAGE === */
 .about-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--gutter);
   padding: 2rem var(--margin);
 }
 
 .about-summary {
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
   font-size: 1rem;
   line-height: 1.4;
   margin-bottom: 2rem;
 }
 
 .about-experience {
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
 }
 
 .about-education {
-  grid-column: 3 / span 2;
+  grid-column: 4 / span 3;
 }
 
 .about-experience h2,
@@ -912,7 +912,7 @@ body.dark {
 
 @media (max-width: 1024px) {
   .about-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   .about-summary {
     grid-column: 1 / span 4;
@@ -921,7 +921,7 @@ body.dark {
     grid-column: 1 / span 2;
   }
   .about-education {
-    grid-column: 1 / span 2;
+    grid-column: 3 / span 2;
   }
 }
 

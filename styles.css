@@ -1,8 +1,6 @@
 ﻿@font-face {
   font-family: 'Space Grotesk';
   src: url('/fonts/SpaceGrotesk-VariableFont_wght.woff2') format('woff2');
-  font-weight: 300 700;
-  font-display: swap;
 }
 
 :root {

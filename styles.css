@@ -883,7 +883,8 @@ body.dark {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: var(--gutter);
-  padding: 2rem var(--margin);
+  margin: 2rem 0;
+  padding: 0 var(--margin);
 }
 
 .about-summary {

@@ -1,0 +1,100 @@
+/* === NAVIGATION === */
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  padding: 0.9375rem var(--margin);
+  height: var(--navbar-height);
+  gap: var(--gutter);
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly below */
+  animation: fadeUp 0.8s ease-out forwards; /* Trigger animation */
+  animation-delay: 0.3s; /* Optional delay for better timing */
+  position: static;    /* restore default */
+  top: auto;
+  left: auto;
+  width: 100%;         /* keep full width if you like */
+  z-index: auto;       /* or whatever stacking you need */
+}
+
+.nav-item {
+  font-size: var(--font-size-nav);
+  letter-spacing: var(--font-kerning-nav);
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-left {
+  grid-column: 1 / span 2;
+  justify-self: start;
+}
+
+.nav-about {
+  grid-column: 5;
+  justify-self: end;
+}
+
+.nav-contact {
+  grid-column: 6;
+  justify-self: end;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.75rem var(--margin);
+    row-gap: 0.5rem;
+  }
+
+  .nav-left {
+    grid-column: 1 / span 2;
+  }
+
+  .nav-about {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .nav-contact {
+    grid-column: 4;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.5rem var(--margin);
+    gap: 0.5rem;
+  }
+
+  .nav-left {
+    grid-column: 1 / span 2;
+    justify-self: start;
+  }
+
+  .nav-about {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .nav-contact {
+    grid-column: 4;
+    justify-self: end;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

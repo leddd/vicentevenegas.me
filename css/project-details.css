@@ -1,0 +1,131 @@
+/* Project Page Styles */
+.project-details {
+  margin-top: 2rem;
+  padding: 2rem var(--margin);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Use a 6-column grid */
+  gap: 1rem;
+  text-align: left; /* Align content to the left */
+}
+
+/* Project Pill */
+.project-details .pill {
+  position: relative; /* Reset absolute positioning */
+  opacity: 1; /* Ensure the pill is visible */
+  grid-column: 1 / span 1; /* Align to the first column */
+  justify-self: start; /* Align the pill to the left */
+  top: 0; /* Reset offset from base .pill */
+  left: 0; /* Reset offset from base .pill */
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50px;
+  padding: 0.25rem 1rem;
+  font-size: 2.5rem; /* Slightly larger text */
+  font-weight: 400;
+  letter-spacing: var(--font-kerning-nav);
+  width: fit-content; /* Size of the text */
+  margin-bottom: 1rem; /* More space before tags */
+  margin-top: 0;
+}
+
+/* Tags */
+.project-details .tags {
+  grid-column: 1 / span 1; /* Align left, single column */
+  display: flex;
+  flex-direction: column; /* Stack tags vertically */
+  gap: 0.25rem;
+  margin-top: 0; /* alignment with images */
+  margin-bottom: 1rem; /* Space between tags and description */
+}
+
+.project-details .tag {
+  background: none; /* Remove background */
+  color: gray; /* Set text color to gray */
+  padding: 0; /* Remove padding */
+  font-size: 1rem;
+  font-weight: 500; /* Make tags bold */
+  line-height: 1.2; /* tighter spacing */
+}
+
+/* Description Paragraphs */
+.project-details .description {
+  grid-column: 1 / span 1; /* Text occupies first column */
+  font-size: 1rem;
+  line-height: 1.4; /* slightly tighter */
+  color: var(--text-color);
+}
+
+@media (max-width: 1024px) {
+  .project-details {
+  margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-details {
+  margin-top: 0rem;
+  }
+}
+
+.project-details .description p {
+  margin-bottom: 0.75rem; /* Smaller spacing between paragraphs */
+}
+
+/* Images on the project details page */
+.project-details img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-details .main-image {
+  grid-column: 3 / span 4; /* columns 3 to 6 */
+}
+
+.project-details .sub-image-1 {
+  grid-column: 3 / span 2; /* columns 3 to 4 */
+}
+
+.project-details .sub-image-2 {
+  grid-column: 5 / span 2; /* columns 5 to 6 */
+}
+
+/* Next project link */
+.project-details .next-project {
+  grid-column: 1 / span 2;
+  justify-self: start;
+  align-self: end;
+  font-size: var(--font-size-nav);
+  letter-spacing: var(--font-kerning-nav);
+  text-decoration: none;
+  color: inherit;
+  margin-top: 1rem; /* Space above next project link */
+}
+
+@media (max-width: 600px) {
+  .project-details .next-project {
+    grid-column: 1 / span 2; /* last column in mobile layout */
+  }
+}
+
+/* Tablet layout adjustments */
+@media (max-width: 1024px) {
+  .project-details .description {
+    grid-column: 1 / span 2; /* allow text to span columns 1-2 */
+  }
+}
+
+/* Mobile layout: switch to four columns and stack content */
+@media (max-width: 600px) {
+  .project-details {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .project-details .pill,
+  .project-details .tags,
+  .project-details .description,
+  .project-details .main-image,
+  .project-details .sub-image-1,
+  .project-details .sub-image-2 {
+    grid-column: 1 / span 4;
+  }
+}

@@ -38,8 +38,9 @@ body.dark {
 .footer .svg-container.talk-footer {
   top: calc(var(--contact-top) + var(--talk-offset));
   left: var(--margin);
-  width: clamp(25%, 25%, 25%);
+  width: clamp(100%, 100%, 100%);
   z-index: 3;
+  margin-bottom: 1rem;
 }
 
 
@@ -47,8 +48,8 @@ body.dark {
 /* Hand wave SVG */
 .footer .svg-container.hand-footer {
   top: calc(var(--contact-top) + var(--hand-offset));
-  left: calc(var(--margin) + 22%);
-  width: clamp(9%, 9%, 9%);
+  left: calc(var(--margin) + 30%);
+  width: clamp(35%, 35%, 35%);
   z-index: 2;
 }
 
@@ -60,7 +61,6 @@ body.dark {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--gutter);
 }
 
 .contact-page .contact-block .talk-footer,
@@ -182,3 +182,4 @@ body.dark {
   .contact-page {
     --contact-top: 30%;
   }
+}

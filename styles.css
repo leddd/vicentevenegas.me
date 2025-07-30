@@ -637,7 +637,7 @@ body.dark {
 
 /* Let’s talk SVG */
 .footer .svg-container.talk-footer {
-  top: 23%;
+  top: 22%;
   left: var(--margin);
   width: clamp(25%, 25%, 25%);
   z-index: 3;

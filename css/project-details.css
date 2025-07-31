@@ -78,6 +78,22 @@
   display: block;
 }
 
+/* Scroll reveal animation */
+.project-details .main-image,
+.project-details .sub-image-1,
+.project-details .sub-image-2 {
+  opacity: 0;
+  transform: translateY(40px) skewY(3deg);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.project-details .main-image.reveal,
+.project-details .sub-image-1.reveal,
+.project-details .sub-image-2.reveal {
+  opacity: 1;
+  transform: translateY(0) skewY(0);
+}
+
 .project-details .main-image {
   grid-column: 3 / span 4; /* columns 3 to 6 */
 }

@@ -85,6 +85,12 @@ window.addEventListener('DOMContentLoaded', () => {
     tile.setAttribute('data-scroll-class', 'reveal');
   });
 
+  // Project detail images animation class
+  document.querySelectorAll('.project-details img').forEach(img => {
+    img.setAttribute('data-scroll', '');
+    img.setAttribute('data-scroll-class', 'reveal');
+  });
+
   // Wipe reveal animation for hero SVGs
   document.querySelectorAll('.hero .svg-container.text, .hero .svg-container.hand, .hero .svg-container.pc').forEach((container, i) => {
     if (!container.querySelector('.wipe-reveal')) {

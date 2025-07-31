@@ -77,23 +77,3 @@ a:visited {
 [data-scroll-section] {
   position: relative;
 }
-#custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1px; /* Slightly larger cursor */
-  height: 1px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  background: rgba(255, 255, 255, 0.3); /* Brighter glow */
-  box-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.4); /* More blur and brightness */
-  mix-blend-mode: screen;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-  opacity: 0;
-}
-
-body:hover #custom-cursor {
-  opacity: 1;
-}

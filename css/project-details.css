@@ -148,7 +148,7 @@
 
 /* Grid of next project thumbnails */
 .project-details .next-projects {
-  grid-column: 1 / span 6;
+  grid-column: 1 / span 4;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gutter);

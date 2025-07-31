@@ -175,3 +175,14 @@ body.dark {
     --contact-top: 30%;
   }
 }
+
+/* Ensure contact page footer always fills the screen */
+.contact-page .footer {
+  height: calc(100svh - var(--navbar-height));
+}
+
+@media (max-width: 850px), (orientation: landscape) and (max-height: 500px) {
+  .footer .svg-container.hand-footer {
+    display: none;
+  }
+}

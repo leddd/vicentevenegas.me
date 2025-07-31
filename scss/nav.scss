@@ -1,0 +1,180 @@
+/* === NAVIGATION === */
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  padding: 0.9375rem var(--margin);
+  height: var(--navbar-height);
+  gap: var(--gutter);
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly below */
+  animation: fadeUp 0.5s ease-out forwards; /* Trigger animation */
+  animation-delay: 0.1s; /* Optional delay for better timing */
+  position: static;    /* restore default */
+  top: auto;
+  left: auto;
+  width: 100%;         /* keep full width if you like */
+  z-index: auto;       /* or whatever stacking you need */
+}
+
+.nav-item {
+  font-size: var(--font-size-nav);
+  letter-spacing: var(--font-kerning-nav);
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-left {
+  grid-column: 1 / span 2;
+  justify-self: start;
+}
+
+.nav-about {
+  grid-column: 5;
+  justify-self: end;
+}
+
+.nav-contact {
+  grid-column: 6;
+  justify-self: end;
+}
+
+/* hidden menu icon by default */
+.nav-menu {
+  display: none;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.nav-menu img {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+/* default menu icon */
+.nav-menu .icon-menu {
+  display: block;
+}
+
+/* open state shows close icon */
+.nav-menu.open .icon-menu {
+  display: none;
+}
+.nav-menu.open .icon-close {
+  display: block;
+}
+
+/* invert icons for dark background */
+body.dark .nav-menu img {
+  filter: invert(1);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.75rem var(--margin);
+    row-gap: 0.5rem;
+  }
+
+  .nav-left {
+    grid-column: 1 / span 3;
+  }
+
+  .nav-about {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .nav-contact {
+    grid-column: 4;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.5rem var(--margin);
+    gap: 0.5rem;
+  }
+
+  .nav-left {
+    grid-column: 1 / span 3;
+    justify-self: start;
+  }
+
+  .nav-about,
+  .nav-contact {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
+    grid-column: 4;
+    justify-self: end;
+  }
+
+  /* Menu icon allows larger text on the home page */
+  .nav-item {
+    font-size: 1.35rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .navbar {
+    padding-top: 0.25rem;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === MOBILE MENU OVERLAY === */
+.mobile-menu-overlay {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: var(--margin);
+  padding-bottom: 20vh;
+  z-index: 999;
+}
+body.dark .mobile-menu-overlay {
+  background: #000000;
+}
+
+.mobile-menu-overlay.open {
+  display: flex;
+}
+
+.mobile-menu-overlay a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 2rem;
+  letter-spacing: var(--font-kerning-nav);
+  margin-top: 0.5rem;
+  line-height: 1.1;
+}
+body.dark .mobile-menu-overlay a {
+  color: #ffffff;
+}
+
+@media (min-width: 481px) {
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+}

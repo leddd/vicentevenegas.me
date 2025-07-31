@@ -8,10 +8,23 @@
   text-align: left; /* Align content to the left */
 }
 
+/* initial animation state for children */
+.project-details > * {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px) skewY(3deg);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.project-details > *.reveal {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) skewY(0);
+}
+
 /* Project Pill */
 .project-details .pill {
   position: relative; /* Reset absolute positioning */
-  opacity: 1; /* Ensure the pill is visible */
   grid-column: 1 / span 1; /* Align to the first column */
   justify-self: start; /* Align the pill to the left */
   top: 0; /* Reset offset from base .pill */

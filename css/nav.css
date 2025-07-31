@@ -50,28 +50,37 @@
   height: auto;
 }
 
-/* default icon visibility */
-.menu-light,
-.close-light {
+/* icon visibility */
+.nav-menu img {
   display: none;
 }
-.close-dark {
-  display: none;
-}
-body.dark .menu-light,
-body.dark .close-light {
+
+/* default menu icon */
+.menu-dark {
   display: block;
 }
-body.dark .menu-dark,
-body.dark .close-dark {
+body.dark .menu-dark {
   display: none;
 }
+body.dark .menu-light {
+  display: block;
+}
+
+/* open state shows close icon */
 .nav-menu.open .menu-dark,
 .nav-menu.open .menu-light {
   display: none;
 }
-.nav-menu.open .close-dark,
+.nav-menu.open .close-dark {
+  display: block;
+}
 .nav-menu.open .close-light {
+  display: none;
+}
+body.dark .nav-menu.open .close-dark {
+  display: none;
+}
+body.dark .nav-menu.open .close-light {
   display: block;
 }
 
@@ -145,13 +154,17 @@ body.dark .close-dark {
 /* === MOBILE MENU OVERLAY === */
 .mobile-menu-overlay {
   position: fixed;
-  inset: 0;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #ffffff;
   display: none;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
   padding: var(--margin);
+  padding-bottom: 20vh;
   z-index: 999;
 }
 body.dark .mobile-menu-overlay {
@@ -166,7 +179,8 @@ body.dark .mobile-menu-overlay {
   color: #000000;
   text-decoration: none;
   font-size: 2rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  line-height: 1.1;
 }
 body.dark .mobile-menu-overlay a {
   color: #ffffff;

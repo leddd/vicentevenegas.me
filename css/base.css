@@ -77,3 +77,18 @@ a:visited {
 [data-scroll-section] {
   position: relative;
 }
+
+/* === PAGE WIPE REVEAL === */
+.page-wipe {
+  position: fixed;
+  inset: 0;
+  background: #000; /* Match dark page background */
+  z-index: 1000;
+  pointer-events: none;
+  animation: page-wipe 1s ease forwards;
+}
+
+@keyframes page-wipe {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}

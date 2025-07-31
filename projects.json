@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "djavu",
+    "title": "djavu",
+    "tags": ["CAD/CAM", "UX", "Branding"],
+    "description": [
+      "The secret of happiness is to be in harmony with yourself; little more is permitted or desirable. Seek your environment and adapt it: do not ask me what is ‘yourself’—I know only vaguely what I have made from Self into myself.",
+      "The secret of happiness is to be in harmony with yourself; little more is permitted or desirable. Seek your environment and adapt it: do not ask me what is ‘yourself’—I know only vaguely what I have made from Self into myself."
+    ],
+    "mainImage": "images/djavu.png",
+    "subImages": ["images/carvuk.png", "images/moda.png"]
+  },
+  {
+    "slug": "wirun",
+    "title": "wirun",
+    "tags": ["UX", "Branding"],
+    "description": ["Sample description for wirun."],
+    "mainImage": "images/wirun.png",
+    "subImages": ["images/carvuk.png", "images/moda.png"]
+  },
+  {
+    "slug": "carvuk",
+    "title": "carvuk",
+    "tags": ["Branding"],
+    "description": ["Sample description for carvuk."],
+    "mainImage": "images/carvuk.png",
+    "subImages": ["images/moda.png", "images/djavu.png"]
+  },
+  {
+    "slug": "moda",
+    "title": "moda",
+    "tags": ["Branding"],
+    "description": ["Sample description for moda."],
+    "mainImage": "images/moda.png",
+    "subImages": ["images/djavu.png", "images/carvuk.png"]
+  }
+]

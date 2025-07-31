@@ -81,11 +81,14 @@ a:visited {
 /* === PAGE WIPE REVEAL === */
 .page-wipe {
   position: fixed;
-  inset: 0;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #000; /* Match dark page background */
   z-index: 1000;
   pointer-events: none;
-  animation: page-wipe 1s ease forwards;
+  animation: page-wipe 1.3s ease forwards;
 }
 
 @keyframes page-wipe {

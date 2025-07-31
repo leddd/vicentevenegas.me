@@ -96,7 +96,7 @@ body.dark {
 /* Social icons */
 .footer-social {
   position: absolute;
-  bottom: 4%;
+  bottom: var(--margin);
   right: var(--margin);
   display: flex;
   gap: var(--gutter);
@@ -125,6 +125,12 @@ body.dark {
 }
 .contact-page .footer {
   height: calc(100vh - var(--navbar-height));
+}
+
+@supports (height: 100dvh) {
+  .contact-page .footer {
+    height: calc(100dvh - var(--navbar-height));
+  }
 }
 
 /* Adjust footer height for different aspect ratios */
@@ -161,7 +167,7 @@ body.dark {
 
   /* Make social icons smaller on mobile */
   .footer-social img {
-    width: clamp(2rem, 2.5vw, 2.75rem); /* Smaller size for mobile */
+    width: clamp(2.5rem, 3vw, 3rem); /* Slightly larger size for mobile */
     height: auto;
   }
 

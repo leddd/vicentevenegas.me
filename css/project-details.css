@@ -152,7 +152,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gutter);
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .project-details .next-projects .project-tile {
@@ -162,5 +162,8 @@
 @media (max-width: 600px) {
   .project-details .next-projects {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .project-details .next-projects .project-tile:nth-child(3) {
+    display: none;
   }
 }

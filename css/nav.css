@@ -129,8 +129,9 @@ body.dark .nav-menu.open .close-light {
     justify-self: end;
   }
 
+  /* Menu icon allows larger text on the home page */
   .nav-item {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 }
 

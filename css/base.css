@@ -8,7 +8,8 @@
   --margin: 4rem;
   --gutter: 1.25rem;
   --columns: 6;
-  --font-size-nav: clamp(1.25rem, 2vw + 0.5rem, 2rem);
+  /* Slightly larger minimum size for navbar links */
+  --font-size-nav: clamp(1.35rem, 2vw + 0.5rem, 2rem);
   --font-kerning-nav: -0.05em;
   --navbar-height: 3.5rem;
 }

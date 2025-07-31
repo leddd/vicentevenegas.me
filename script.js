@@ -155,17 +155,35 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // Mobile menu toggle
-  const mobileMenu = document.getElementById('mobile-menu');
-  const openMenuBtn = document.getElementById('open-menu');
-  openMenuBtn?.addEventListener('click', e => {
-    e.preventDefault();
-    mobileMenu?.classList.toggle('open');
-    openMenuBtn.classList.toggle('open');
-  });
+  const mobileMenu   = document.getElementById('mobile-menu');
+  const openMenuBtn  = document.getElementById('open-menu');
+  const closeMenuBtn = document.getElementById('close-menu');
+
+  function toggleMenu(e) {
+    e?.preventDefault();
+    if (!mobileMenu) return;
+    const opening = !mobileMenu.classList.contains('open');
+
+    mobileMenu.classList.toggle('open');
+    openMenuBtn?.classList.toggle('open');
+    document.body.classList.toggle('nav-open');
+
+    if (opening) {
+      scroll.stop();
+    } else {
+      scroll.start();
+    }
+  }
+
+  openMenuBtn?.addEventListener('click', toggleMenu);
+  closeMenuBtn?.addEventListener('click', toggleMenu);
+
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
-      openMenuBtn.classList.remove('open');
+      openMenuBtn?.classList.remove('open');
+      document.body.classList.remove('nav-open');
+      scroll.start();
     });
   });
 });

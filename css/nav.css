@@ -30,6 +30,11 @@
 }
 
 .nav-about {
+  grid-column: 4;
+  justify-self: end;
+}
+
+.nav-project {
   grid-column: 5;
   justify-self: end;
 }
@@ -85,6 +90,11 @@ body.dark .nav-menu img {
     justify-self: end;
   }
 
+  .nav-project {
+    grid-column: 3;
+    justify-self: end;
+  }
+
   .nav-contact {
     grid-column: 4;
     justify-self: end;
@@ -104,6 +114,7 @@ body.dark .nav-menu img {
   }
 
   .nav-about,
+  .nav-project,
   .nav-contact {
     display: none;
   }

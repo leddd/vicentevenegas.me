@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // 3) Cache frequently used elements
   const projectsEl          = document.querySelector('.projects');
   const footer              = document.querySelector('.footer');
-  const scrollToProjectsBtn = document.getElementById('scroll-to-projects');
+  const scrollToProjectsBtns = document.querySelectorAll('[data-scroll-to-projects]');
   const scrollDownArrow     = document.getElementById('scroll-down');
   const scrollToFooterBtn   = document.getElementById('scroll-to-footer');
   const cursor              = document.getElementById('custom-cursor');
@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   // Bind button clicks
-  scrollToProjectsBtn?.addEventListener('click', scrollToProjects);
+  scrollToProjectsBtns.forEach(btn => btn.addEventListener('click', scrollToProjects));
   scrollDownArrow?.addEventListener('click', scrollToProjects);
   scrollToFooterBtn?.addEventListener('click', scrollToFooter);
 

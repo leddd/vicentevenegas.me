@@ -153,4 +153,15 @@ window.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
     el.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
   });
+
+  // Mobile menu toggle
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openMenuBtn = document.getElementById('open-menu');
+  openMenuBtn?.addEventListener('click', e => {
+    e.preventDefault();
+    mobileMenu?.classList.toggle('open');
+  });
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
 });

@@ -42,46 +42,31 @@
 /* hidden menu icon by default */
 .nav-menu {
   display: none;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 .nav-menu img {
   width: 100%;
   height: auto;
-}
-
-/* icon visibility */
-.nav-menu img {
   display: none;
 }
 
 /* default menu icon */
-.menu-dark {
-  display: block;
-}
-body.dark .menu-dark {
-  display: none;
-}
-body.dark .menu-light {
+.nav-menu .icon-menu {
   display: block;
 }
 
 /* open state shows close icon */
-.nav-menu.open .menu-dark,
-.nav-menu.open .menu-light {
+.nav-menu.open .icon-menu {
   display: none;
 }
-.nav-menu.open .close-dark {
+.nav-menu.open .icon-close {
   display: block;
 }
-.nav-menu.open .close-light {
-  display: none;
-}
-body.dark .nav-menu.open .close-dark {
-  display: none;
-}
-body.dark .nav-menu.open .close-light {
-  display: block;
+
+/* invert icons for dark background */
+body.dark .nav-menu img {
+  filter: invert(1);
 }
 
 @media (max-width: 768px) {
@@ -180,6 +165,7 @@ body.dark .mobile-menu-overlay {
   color: #000000;
   text-decoration: none;
   font-size: 2rem;
+  letter-spacing: var(--font-kerning-nav);
   margin-top: 0.5rem;
   line-height: 1.1;
 }

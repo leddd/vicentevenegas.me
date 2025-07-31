@@ -167,7 +167,7 @@ body.dark {
 @media (orientation: portrait) {
   /* Position the "Let's talk" block higher on tall screens */
   .contact-page {
-    --contact-top: 30%;
+    --contact-top: 25%;
   }
 }
 

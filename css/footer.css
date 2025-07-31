@@ -47,8 +47,7 @@ body.dark {
 
 /* Hand wave SVG */
 .footer .svg-container.hand-footer {
-  top: calc(var(--contact-top) + var(--hand-offset));
-  left: calc(var(--margin) + 30%);
+  padding-top: 25%;
   width: clamp(35%, 35%, 35%);
   z-index: 2;
 }
@@ -119,9 +118,7 @@ body.dark {
 
 /* When the footer is the only main content (contact page) subtract navbar height */
 .contact-page {
-  --contact-top: 35%;
-  --talk-offset: -13%;
-  --hand-offset: 7%;
+  --contact-top: 20%;
 }
 .contact-page .footer {
   height: calc(100vh - var(--navbar-height));

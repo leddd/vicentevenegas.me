@@ -1,10 +1,7 @@
-// script.js
-window.addEventListener('DOMContentLoaded', () => {
-  // 1) Grab the scroll container and bail if missing
+export default function initScroll() {
   const container = document.querySelector('[data-scroll-container]');
-  if (!container) return;
+  if (!container || typeof LocomotiveScroll === 'undefined') return null;
 
-  // 2) Initialize Locomotive Scroll for smooth scrolling
   const scroll = new LocomotiveScroll({
     el: container,
     smooth: true,
@@ -12,7 +9,6 @@ window.addEventListener('DOMContentLoaded', () => {
     getDirection: true,
   });
 
-  // 3) Cache frequently used elements
   const projectsEl          = document.querySelector('.projects');
   const footer              = document.querySelector('.footer');
   const scrollToProjectsBtn = document.getElementById('scroll-to-projects');
@@ -31,7 +27,6 @@ window.addEventListener('DOMContentLoaded', () => {
     easing: [0.25, 0, 0.35, 1],
   };
 
-  // Remove page wipe overlay once the animation completes
   if (pageWipe) {
     pageWipe.addEventListener('animationend', () => pageWipe.remove());
   }
@@ -51,7 +46,6 @@ window.addEventListener('DOMContentLoaded', () => {
   layoutContact();
   window.addEventListener('resize', layoutContact);
 
-  // Scroll helpers
   function scrollToProjects(e) {
     e.preventDefault();
     if (!projectsEl || isManuallyScrollingToFooter) return;
@@ -69,46 +63,37 @@ window.addEventListener('DOMContentLoaded', () => {
       offset: 0,
       ...SNAP_SETTINGS,
       callback: () => {
-        setTimeout(() => isManuallyScrollingToFooter = false, 300);
+        setTimeout(() => (isManuallyScrollingToFooter = false), 300);
       },
     });
   }
 
-  // Bind button clicks
   scrollToProjectsBtn?.addEventListener('click', scrollToProjects);
   scrollDownArrow?.addEventListener('click', scrollToProjects);
   scrollToFooterBtn?.addEventListener('click', scrollToFooter);
 
-  // Project tile animation class
   document.querySelectorAll('.project-tile').forEach(tile => {
     tile.setAttribute('data-scroll', '');
     tile.setAttribute('data-scroll-class', 'reveal');
   });
 
-  // Project detail images animation class
   document.querySelectorAll('.project-details img').forEach(img => {
     img.setAttribute('data-scroll', '');
     img.setAttribute('data-scroll-class', 'reveal');
   });
 
-  // Wipe reveal animation for hero SVGs
   document.querySelectorAll('.hero .svg-container.text, .hero .svg-container.hand, .hero .svg-container.pc').forEach((container, i) => {
     if (!container.querySelector('.wipe-reveal')) {
       const wipe = document.createElement('div');
       wipe.className = 'wipe-reveal';
       if (container.classList.contains('pc')) wipe.classList.add('right-to-left');
       container.appendChild(wipe);
-
-      // Remove the wipe element after the animation is complete
-      setTimeout(() => {
-        wipe.remove(); // Remove the wipe element from the DOM
-      }, 1200); // Match the duration of the wipe animation (e.g., 1.2s)
+      setTimeout(() => wipe.remove(), 1200);
     }
     container.classList.remove('revealed');
     setTimeout(() => container.classList.add('revealed'), 200 + i * 150);
   });
 
-  // Contact SVG animation
   const contactSVG = document.querySelector('.hero .svg-container.contact');
   if (contactSVG) {
     contactSVG.style.opacity = '0';
@@ -125,24 +110,20 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 750);
   }
 
-  // Fade in and out down arrow based on scroll position
   scroll.on('scroll', ({ scroll: { y } }) => {
     const vh = window.innerHeight;
     const fY = footer?.offsetTop ?? Infinity;
     const fH = footer?.offsetHeight ?? 0;
 
-    // Update hero arrow opacity
     if (scrollDownArrow) {
       scrollDownArrow.style.opacity = Math.max(0, 1 - y / (vh / 2));
     }
 
-    // Toggle dark mode based on footer visibility
     if (footer) {
       const bottom = y + vh;
       document.body.classList.toggle('dark', bottom >= fY + fH * 0.4);
     }
 
-    // Fade in footer arrow
     if (footerDownArrow) {
       const bottom = y + vh;
       const fadeThreshold = fY + vh * 0.1;
@@ -150,14 +131,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Initial fade in for hero arrow
   if (scrollDownArrow) {
     scrollDownArrow.style.opacity = '0';
     scrollDownArrow.style.transition = 'opacity 0.3s ease-out';
     setTimeout(() => (scrollDownArrow.style.opacity = '1'), 1000);
   }
 
-  // Custom cursor
   window.addEventListener('mousemove', e => {
     cursor?.style.setProperty('transform', `translate(${e.clientX}px, ${e.clientY}px)`);
   });
@@ -166,35 +145,5 @@ window.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
   });
 
-  // Mobile menu toggle
-  const mobileMenu = document.getElementById('mobile-menu');
-  const openMenuBtn = document.getElementById('open-menu');
-  const htmlEl = document.documentElement;
-  openMenuBtn?.addEventListener('click', e => {
-    e.preventDefault();
-    const isOpen = mobileMenu?.classList.toggle('open');
-    openMenuBtn.classList.toggle('open');
-    if (isOpen) {
-      scroll.stop();
-      htmlEl.classList.add('no-scroll');
-    } else {
-      scroll.start();
-      htmlEl.classList.remove('no-scroll');
-    }
-  });
-
-  function closeMenu() {
-    if (!mobileMenu.classList.contains('open')) return;
-    mobileMenu.classList.remove('open');
-    openMenuBtn.classList.remove('open');
-    scroll.start();
-    htmlEl.classList.remove('no-scroll');
-  }
-
-  mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-  document.querySelectorAll('.navbar a:not(#open-menu)').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-});
+  return scroll;
+}

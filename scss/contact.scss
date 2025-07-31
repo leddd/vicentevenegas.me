@@ -1,0 +1,189 @@
+/* Down arrow at the top of the footer */
+.footer .svg-container.down {
+  position: absolute;
+  top: 2rem; /* Adjust distance from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(2rem, 2.5vw, 3rem); /* Responsive size */
+  cursor: default; /* Change cursor to default */
+  pointer-events: none; /* Disable clickability */
+  opacity: 1; /* Ensure it is visible */
+  transition: opacity 0.5s ease; /* Smooth fade effect */
+}
+/* empty footer, full viewport height */
+.footer {
+  height: 100svh;
+  position: relative; /* ensure footer can position absolute children */
+}
+
+/* dark mode when footer is visible */
+body.dark {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.footer .svg-container {
+  position: absolute;
+  background: transparent;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.footer .svg-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Let’s talk SVG */
+.footer .svg-container.talk-footer {
+  top: calc(var(--contact-top) + var(--talk-offset));
+  left: var(--margin);
+  width: clamp(100%, 100%, 100%);
+  z-index: 3;
+  margin-bottom: 1rem;
+}
+
+
+
+/* Hand wave SVG */
+.footer .svg-container.hand-footer {
+  padding-top: 25%;
+  width: clamp(45%, 45%, 45%);
+  z-index: 2;
+}
+
+/* contact page stacked elements */
+.contact-page .contact-block {
+  position: absolute;
+  top: var(--contact-top);
+  left: var(--margin);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-page .contact-block .talk-footer,
+.contact-page .contact-block .footer-contact-text {
+  position: static;
+  top: auto;
+  left: auto;
+}
+
+
+/* Contact text block */
+.footer-contact-text {
+  position: absolute;
+  top: var(--contact-top);
+  left: var(--margin);
+  font-size: var(--font-size-nav);
+  font-weight: 300;
+  line-height: 1;
+  color: #ffffff; /* Ensure "contact me at" is always white */
+  letter-spacing: var(--font-kerning-nav); /* Match navbar tracking */
+  z-index: 1;
+}
+
+.footer-contact-text a {
+  color: #ffffff; /* Ensure the email link is also white */
+  text-decoration: underline;
+  font-weight: 400; /* Slightly bolder for emphasis */
+  letter-spacing: var(--font-kerning-nav); /* Match navbar tracking */
+  transition: color 0.3s ease;
+}
+
+
+/* Social icons */
+.footer-social {
+  position: absolute;
+  bottom: 4%;
+  right: var(--margin);
+  display: flex;
+  gap: var(--gutter);
+}
+
+.footer-social img {
+  width: clamp(3rem, 3vw, 3.5rem);
+  height: auto;
+}
+
+/* Footer Section */
+.footer {
+  position: relative; /* Ensure footer can position absolute children */
+  width: 100%;
+  height: 100svh; /* Default height for 16:9 aspect ratio */
+  overflow: hidden;
+  padding: 0 var(--margin);
+  background: transparent;
+}
+
+/* When the footer is the only main content (contact page) subtract navbar height */
+.contact-page {
+  --contact-top: 20%;
+}
+.contact-page .footer {
+  height: calc(100svh - var(--navbar-height));
+}
+
+/* Adjust footer height for different aspect ratios */
+@media (max-width: 1200px) {
+  .footer {
+    height: calc(100vw * 0.5); /* Adjust height for narrower desktop widths */
+  }
+  .contact-page .footer {
+    height: calc(100vw * 0.5 - var(--navbar-height));
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    height: calc(100vw * 0.5); /* Adjust height for mobile resolutions */
+    padding: 0 var(--margin) 1rem;
+  }
+  .contact-page .footer {
+    height: calc(100vw * 0.5 - var(--navbar-height));
+  }
+  .contact-page {
+    --contact-top: 40%;
+    --talk-offset: -22%;
+  }
+  /* Make "Let's Talk" SVG larger on mobile */
+  .footer .svg-container.talk-footer {
+    width: clamp(40%, 45%, 50%); /* Increase size for mobile */
+  }
+  /* Hide hand wave SVG on mobile */
+  .footer .svg-container.hand-footer {
+    display: none;
+  }
+
+
+  /* Make social icons slightly larger on mobile */
+  .footer-social img {
+    width: clamp(2.75rem, 7vw, 3.5rem);
+    height: auto;
+  }
+
+}
+
+@media (orientation: portrait) {
+  /* Position the "Let's talk" block higher on tall screens */
+  .contact-page {
+    --contact-top: 25%;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .contact-page {
+    --contact-top: 30%;
+  }
+}
+
+/* Ensure contact page footer always fills the screen */
+.contact-page .footer {
+  height: calc(100svh - var(--navbar-height));
+}
+
+@media (max-width: 850px), (orientation: landscape) and (max-height: 500px) {
+  .footer .svg-container.hand-footer {
+    display: none;
+  }
+}

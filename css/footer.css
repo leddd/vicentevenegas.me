@@ -48,7 +48,7 @@ body.dark {
 /* Hand wave SVG */
 .footer .svg-container.hand-footer {
   padding-top: 25%;
-  width: clamp(35%, 35%, 35%);
+  width: clamp(45%, 45%, 45%);
   z-index: 2;
 }
 

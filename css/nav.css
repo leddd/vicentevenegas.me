@@ -140,7 +140,7 @@ body.dark .nav-menu img {
 /* === MOBILE MENU OVERLAY === */
 .mobile-menu-overlay {
   position: fixed;
-  top: var(--navbar-height);
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -150,6 +150,7 @@ body.dark .nav-menu img {
   justify-content: flex-end;
   align-items: flex-end;
   padding: var(--margin);
+  padding-top: var(--navbar-height);
   padding-bottom: 20vh;
   z-index: 999;
 }
@@ -159,6 +160,13 @@ body.dark .mobile-menu-overlay {
 
 .mobile-menu-overlay.open {
   display: flex;
+}
+
+.overlay-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .mobile-menu-overlay a {

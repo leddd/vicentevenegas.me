@@ -8,18 +8,18 @@
 }
 
 .about-summary {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 2;
   font-size: 1rem;
   line-height: 1.4;
   margin-bottom: 2rem;
 }
 
 .about-experience {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 2;
 }
 
 .about-education {
-  grid-column: 4 / span 3;
+  grid-column: 3 / span 4;
 }
 
 .about-experience h2,

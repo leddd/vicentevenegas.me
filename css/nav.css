@@ -77,7 +77,7 @@ body.dark .nav-menu img {
   }
 
   .nav-left {
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 3;
   }
 
   .nav-about {
@@ -99,7 +99,7 @@ body.dark .nav-menu img {
   }
 
   .nav-left {
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 3;
     justify-self: start;
   }
 

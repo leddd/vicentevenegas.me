@@ -160,8 +160,12 @@ window.addEventListener('DOMContentLoaded', () => {
   openMenuBtn?.addEventListener('click', e => {
     e.preventDefault();
     mobileMenu?.classList.toggle('open');
+    openMenuBtn.classList.toggle('open');
   });
   mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      openMenuBtn.classList.remove('open');
+    });
   });
 });

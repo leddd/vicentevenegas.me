@@ -24,11 +24,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const talkFooter          = document.querySelector('.contact-block .talk-footer');
   const contactText         = document.querySelector('.contact-block .footer-contact-text');
   const handFooter          = document.querySelector('.contact-block .hand-footer');
+  const pageWipe            = document.querySelector('.page-wipe');
 
   const SNAP_SETTINGS = {
     duration: 500,
     easing: [0.25, 0, 0.35, 1],
   };
+
+  // Remove page wipe overlay once the animation completes
+  if (pageWipe) {
+    pageWipe.addEventListener('animationend', () => pageWipe.remove());
+  }
 
   let isManuallyScrollingToFooter = false;
 

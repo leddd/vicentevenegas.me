@@ -91,6 +91,11 @@ a:visited {
   animation: page-wipe 1.3s ease forwards;
 }
 
+/* Light theme wipe for pages with white backgrounds */
+.page-wipe-light {
+  background: #fff;
+}
+
 @keyframes page-wipe {
   from { transform: translateX(0); }
   to { transform: translateX(100%); }

@@ -145,3 +145,22 @@
     grid-column: 1 / span 4;
   }
 }
+
+/* Grid of next project thumbnails */
+.project-details .next-projects {
+  grid-column: 1 / span 6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  margin-top: 1rem;
+}
+
+.project-details .next-projects .project-tile {
+  grid-column: span 1;
+}
+
+@media (max-width: 600px) {
+  .project-details .next-projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

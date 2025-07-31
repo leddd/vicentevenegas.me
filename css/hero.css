@@ -128,7 +128,7 @@
 .hero .svg-container.pc,
 .hero .svg-container.down,
 .hero .svg-container.contact {
-  opacity: 1;
+  opacity: 0;
   animation: none;
   animation-name: none;
   animation-delay: 0s;
@@ -138,6 +138,12 @@
   animation-iteration-count: 1;
   animation-direction: normal;
 }
+
+/* Hero SVGs become visible once the 'revealed' class is added */
+.hero .svg-container.revealed {
+  opacity: 1;
+}
+
 
 /* === HERO SVG REVEAL (WIPE) ANIMATION FOR TEXT AND HAND - Z-INDEX FIX (HAND BELOW TEXT) === */
 .hero .svg-container.text {

@@ -8,8 +8,8 @@
   gap: var(--gutter);
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start slightly below */
-  animation: fadeUp 0.8s ease-out forwards; /* Trigger animation */
-  animation-delay: 0.3s; /* Optional delay for better timing */
+  animation: fadeUp 0.5s ease-out forwards; /* Trigger animation */
+  animation-delay: 0.1s; /* Optional delay for better timing */
   position: static;    /* restore default */
   top: auto;
   left: auto;

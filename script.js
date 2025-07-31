@@ -24,6 +24,15 @@ window.addEventListener('DOMContentLoaded', () => {
   const talkFooter          = document.querySelector('.contact-block .talk-footer');
   const contactText         = document.querySelector('.contact-block .footer-contact-text');
   const handFooter          = document.querySelector('.contact-block .hand-footer');
+  const menuToggle          = document.getElementById('menu-toggle');
+  const menuOverlay         = document.getElementById('menu-overlay');
+
+  function updateMenuIcon() {
+    if (!menuToggle) return;
+    const img = menuToggle.querySelector('img');
+    if (!img) return;
+    img.src = document.body.classList.contains('dark') ? 'svg/menu2.svg' : 'svg/menu.svg';
+  }
 
   const SNAP_SETTINGS = {
     duration: 500,
@@ -44,6 +53,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   layoutContact();
   window.addEventListener('resize', layoutContact);
+
+  // Menu overlay toggle
+  menuToggle?.addEventListener('click', () => {
+    menuOverlay?.classList.toggle('open');
+  });
+
+  menuOverlay?.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', () => menuOverlay.classList.remove('open'))
+  );
+
+  updateMenuIcon();
 
   // Scroll helpers
   function scrollToProjects(e) {
@@ -128,6 +148,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (footer) {
       const bottom = y + vh;
       document.body.classList.toggle('dark', bottom >= fY + fH * 0.4);
+      updateMenuIcon();
     }
 
     // Fade in footer arrow

@@ -2,17 +2,32 @@
 .project-details {
   margin-top: 2rem;
   padding: 2rem var(--margin);
+}
+
+/* container for text and images */
+.project-details .detail-segment {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Use a 6-column grid */
+  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
-  text-align: left; /* Align content to the left */
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.project-details .detail-segment .text-block {
+  grid-column: 1 / span 2;
+}
+
+.project-details .detail-segment .image-grid {
+  grid-column: 3 / span 4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 /* Project Pill */
-.project-details .pill {
+.project-details .detail-segment .pill {
   position: relative; /* Reset absolute positioning */
   opacity: 1; /* Ensure the pill is visible */
-  grid-column: 1 / span 1; /* Align to the first column */
   justify-self: start; /* Align the pill to the left */
   top: 0; /* Reset offset from base .pill */
   left: 0; /* Reset offset from base .pill */
@@ -29,8 +44,7 @@
 }
 
 /* Tags */
-.project-details .tags {
-  grid-column: 1 / span 1; /* Align left, single column */
+.project-details .detail-segment .tags {
   display: flex;
   flex-direction: column; /* Stack tags vertically */
   gap: 0.25rem;
@@ -38,7 +52,7 @@
   margin-bottom: 1rem; /* Space between tags and description */
 }
 
-.project-details .tag {
+.project-details .detail-segment .tag {
   background: none; /* Remove background */
   color: gray; /* Set text color to gray */
   padding: 0; /* Remove padding */
@@ -48,8 +62,7 @@
 }
 
 /* Description Paragraphs */
-.project-details .description {
-  grid-column: 1 / span 1; /* Text occupies first column */
+.project-details .detail-segment .description {
   font-size: 1rem;
   line-height: 1.4; /* slightly tighter */
   color: var(--text-color);
@@ -57,17 +70,23 @@
 
 @media (max-width: 1024px) {
   .project-details {
-  margin-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .project-details .detail-segment {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .project-details {
-  margin-top: 0rem;
+    margin-top: 0rem;
+  }
+  .project-details .detail-segment {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.project-details .description p {
+.project-details .detail-segment .description p {
   margin-bottom: 0.75rem; /* Smaller spacing between paragraphs */
 }
 
@@ -79,76 +98,64 @@
 }
 
 /* Scroll reveal animation */
-.project-details .main-image,
-.project-details .sub-image-1,
-.project-details .sub-image-2 {
+.project-details .detail-segment .main-image,
+.project-details .detail-segment .sub-image-1,
+.project-details .detail-segment .sub-image-2 {
   opacity: 0;
   transform: translateY(40px) skewY(3deg);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.project-details .main-image.reveal,
-.project-details .sub-image-1.reveal,
-.project-details .sub-image-2.reveal {
+.project-details .detail-segment .main-image.reveal,
+.project-details .detail-segment .sub-image-1.reveal,
+.project-details .detail-segment .sub-image-2.reveal {
   opacity: 1;
   transform: translateY(0) skewY(0);
 }
 
-.project-details .main-image {
-  grid-column: 3 / span 4; /* columns 3 to 6 */
-}
-
-.project-details .sub-image-1 {
-  grid-column: 3 / span 2; /* columns 3 to 4 */
-}
-
-.project-details .sub-image-2 {
-  grid-column: 5 / span 2; /* columns 5 to 6 */
+.project-details .detail-segment .main-image,
+.project-details .detail-segment .sub-image-1,
+.project-details .detail-segment .sub-image-2 {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Next project link */
 .project-details .next-project {
-  grid-column: 1 / span 2;
-  justify-self: start;
-  align-self: end;
   font-size: var(--font-size-nav);
   letter-spacing: var(--font-kerning-nav);
   text-decoration: none;
   color: inherit;
+  display: inline-block;
   margin-top: 1rem; /* Space above next project link */
 }
 
 @media (max-width: 600px) {
   .project-details .next-project {
-    grid-column: 1 / span 2; /* last column in mobile layout */
+    display: block;
   }
 }
 
 /* Tablet layout adjustments */
 @media (max-width: 1024px) {
-  .project-details .description {
+  .project-details .detail-segment .description {
     grid-column: 1 / span 2; /* allow text to span columns 1-2 */
   }
 }
 
 /* Mobile layout: switch to four columns and stack content */
 @media (max-width: 600px) {
-  .project-details {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .project-details .pill,
-  .project-details .tags,
-  .project-details .description,
-  .project-details .main-image,
-  .project-details .sub-image-1,
-  .project-details .sub-image-2 {
+  .project-details .detail-segment .pill,
+  .project-details .detail-segment .tags,
+  .project-details .detail-segment .description,
+  .project-details .detail-segment .image-grid {
     grid-column: 1 / span 4;
   }
 }
 
 /* Grid of next project thumbnails */
 .project-details .next-projects {
-  grid-column: 1 / span 4;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gutter);

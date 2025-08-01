@@ -8,6 +8,35 @@
   text-align: left; /* Align content to the left */
 }
 
+/* Block container to pair text with images */
+.project-details .details-container {
+  grid-column: 1 / span 6;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-details .details-container .description {
+  grid-column: 1 / span 2;
+}
+
+.project-details .details-container .image-gallery {
+  grid-column: 3 / span 4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.project-details .image-gallery .sub-image-1,
+.project-details .image-gallery .sub-image-2 {
+  grid-column: span 1;
+}
+
+.project-details .image-gallery .main-image {
+  grid-column: 1 / span 2;
+}
+
 /* Project Pill */
 .project-details .pill {
   position: relative; /* Reset absolute positioning */
@@ -79,30 +108,30 @@
 }
 
 /* Scroll reveal animation */
-.project-details .main-image,
-.project-details .sub-image-1,
-.project-details .sub-image-2 {
+.project-details > .main-image,
+.project-details > .sub-image-1,
+.project-details > .sub-image-2 {
   opacity: 0;
   transform: translateY(40px) skewY(3deg);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.project-details .main-image.reveal,
-.project-details .sub-image-1.reveal,
-.project-details .sub-image-2.reveal {
+.project-details > .main-image.reveal,
+.project-details > .sub-image-1.reveal,
+.project-details > .sub-image-2.reveal {
   opacity: 1;
   transform: translateY(0) skewY(0);
 }
 
-.project-details .main-image {
+.project-details > .main-image {
   grid-column: 3 / span 4; /* columns 3 to 6 */
 }
 
-.project-details .sub-image-1 {
+.project-details > .sub-image-1 {
   grid-column: 3 / span 2; /* columns 3 to 4 */
 }
 
-.project-details .sub-image-2 {
+.project-details > .sub-image-2 {
   grid-column: 5 / span 2; /* columns 5 to 6 */
 }
 
@@ -142,6 +171,13 @@
   .project-details .main-image,
   .project-details .sub-image-1,
   .project-details .sub-image-2 {
+    grid-column: 1 / span 4;
+  }
+  .project-details .details-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .project-details .details-container .description,
+  .project-details .details-container .image-gallery {
     grid-column: 1 / span 4;
   }
 }

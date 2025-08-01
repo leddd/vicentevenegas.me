@@ -1,5 +1,6 @@
 // script.js
-window.addEventListener('DOMContentLoaded', () => {
+// Wait for full page load so images are ready before starting animations
+window.addEventListener('load', () => {
   // 1) Grab the scroll container and bail if missing
   const container = document.querySelector('[data-scroll-container]');
   if (!container) return;
@@ -105,7 +106,8 @@ window.addEventListener('DOMContentLoaded', () => {
       }, 1200); // Match the duration of the wipe animation (e.g., 1.2s)
     }
     container.classList.remove('revealed');
-    setTimeout(() => container.classList.add('revealed'), 200 + i * 150);
+    // Delay reveal a bit longer to ensure images have loaded
+    setTimeout(() => container.classList.add('revealed'), 500 + i * 150);
   });
 
   // Contact SVG animation

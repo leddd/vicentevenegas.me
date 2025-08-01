@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project: carvuk</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+</head>
+<body>
+  <div class="page-wipe page-wipe-light"></div>
+  <main data-scroll-container>
+
+    <!-- Navbar -->
+    <section data-scroll-section>
+      <nav class="navbar">
+        <!-- Using <a> tags for better semantics and tab navigation -->
+        <a href="index.html" class="nav-item nav-left">vicente venegas*</a>
+        <a href="about.html" class="nav-item nav-about">about↗</a>
+        <a href="contact.html" class="nav-item nav-contact">contact↗</a>
+        <a href="#" class="nav-item nav-menu" id="open-menu">
+          <img src="svg/menu.svg" class="menu-icon icon-menu" alt="Menu">
+          <img src="svg/close.svg" class="menu-icon icon-close" alt="Close">
+        </a>
+      </nav>
+      <div id="mobile-menu" class="mobile-menu-overlay">
+        <a href="index.html">home↗</a>
+        <a href="about.html">about↗</a>
+        <a href="contact.html">contact↗</a>
+      </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section class="project-details" data-scroll-section>
+      <div class="pill"><span>carvuk</span></div>
+
+      <div class="detail-section">
+        <div class="description">
+          <div class="tags">
+            <span class="tag">UX research</span>
+            <span class="tag">Service design</span>
+            <span class="tag">Interface design</span>
+          </div>
+          <p>As part of a collaborative course with the automotive tech company Carvuk, we conducted an in-depth user research project to uncover pain points and opportunities across the vehicle maintenance experience. Our team carried out interviews, polls, and shadowing sessions with both users and drivers, mapping out real service journeys to better understand behaviors, expectations, and trust barriers.</p>
+        </div>
+        <div class="image-group">
+          <img src="images/carvuk/4.png" alt="Research photo" class="main-image" data-scroll data-scroll-class="reveal">
+          <img src="images/carvuk/2.png" alt="Research photo" class="sub-image" data-scroll data-scroll-class="reveal">
+          <img src="images/carvuk/1.png" alt="Research photo" class="sub-image" data-scroll data-scroll-class="reveal">
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="description">
+          <p>From this research, we developed detailed user personas and journey maps, identifying key moments where communication and confidence often break down. These insights informed a set of interface visualizations that reimagine how the Carvuk app could support users—through proactive notifications, educational prompts, and a personalized service dashboard. The project demonstrates how strategic research and service design can enhance not just usability, but also user trust in tech-mediated services.</p>
+        </div>
+        <div class="image-group">
+          <img src="images/carvuk/5.png" alt="Interface mockup" class="sub-image" data-scroll data-scroll-class="reveal">
+          <img src="images/carvuk/6.png" alt="Interface mockup" class="sub-image" data-scroll data-scroll-class="reveal">
+        </div>
+      </div>
+
+      <a href="index.html" class="next-project">next project↗</a>
+
+      <div class="next-projects">
+        <a href="#" class="project-tile" data-scroll data-scroll-class="reveal">
+          <img src="images/wirun.png" alt="wirun">
+          <div class="tile-overlay"></div>
+          <div class="pill"><span>wirun</span></div>
+        </a>
+        <a href="#" class="project-tile" data-scroll data-scroll-class="reveal">
+          <img src="images/carvuk.png" alt="carvuk">
+          <div class="tile-overlay"></div>
+          <div class="pill"><span>carvuk</span></div>
+        </a>
+        <a href="#" class="project-tile" data-scroll data-scroll-class="reveal">
+          <img src="images/moda.png" alt="moda">
+          <div class="tile-overlay"></div>
+          <div class="pill"><span>moda</span></div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -107,7 +107,7 @@ window.addEventListener('load', () => {
     }
     container.classList.remove('revealed');
     // Delay reveal a bit longer to ensure images have loaded
-    setTimeout(() => container.classList.add('revealed'), 500 + i * 150);
+    setTimeout(() => container.classList.add('revealed'), 200 + i * 150);
   });
 
   // Contact SVG animation

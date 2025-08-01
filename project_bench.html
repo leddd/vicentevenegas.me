@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project: bench</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+</head>
+<body>
+  <div class="page-wipe page-wipe-light"></div>
+  <main data-scroll-container>
+
+    <!-- Navbar -->
+    <section data-scroll-section>
+      <nav class="navbar">
+        <!-- Using <a> tags for better semantics and tab navigation -->
+        <a href="index.html" class="nav-item nav-left">vicente venegas*</a>
+        <a href="about.html" class="nav-item nav-about">about↗</a>
+        <a href="contact.html" class="nav-item nav-contact">contact↗</a>
+        <a href="#" class="nav-item nav-menu" id="open-menu">
+          <img src="svg/menu.svg" class="menu-icon icon-menu" alt="Menu">
+          <img src="svg/close.svg" class="menu-icon icon-close" alt="Close">
+        </a>
+      </nav>
+      <div id="mobile-menu" class="mobile-menu-overlay">
+        <a href="index.html">home↗</a>
+        <a href="about.html">about↗</a>
+        <a href="contact.html">contact↗</a>
+      </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section class="project-details" data-scroll-section>
+      <div class="pill"><span>bench</span></div>
+
+      <div class="detail-section">
+        <div class="description">
+          <div class="tags">
+            <span class="tag">Industrial design</span>
+            <span class="tag">Prototyping</span>
+            <span class="tag">CAD/CAM</span>
+          </div>
+          <p>A two-person bench constructed from 3mm plywood and assembled using zip ties. The design features a clean, minimalist aesthetic, with flowing curves that enhance both its visual dynamism and structural integrity. It includes an easy-to-follow assembly manual, emphasizing accessible construction and lightweight, tool-free assembly.</p>
+        </div>
+        <div class="image-group">
+          <img src="images/bench2.png" alt="Main project" class="main-image" data-scroll data-scroll-class="reveal">
+          <img src="images/bench3.png" alt="Additional view" class="sub-image" data-scroll data-scroll-class="reveal">
+          <img src="images/bench4.png" alt="Additional view" class="sub-image" data-scroll data-scroll-class="reveal">
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="description">
+          <p>As a complementary element, a desk lamp was designed to accompany the bench, using three materials to project shifting light patterns through a rotating ring. Though secondary in function, the lamp echoes the bench’s curved geometry and material language, reinforcing a unified and expressive design approach.</p>
+        </div>
+        <div class="image-group">
+          <img src="images/bench5.jpg" alt="Lamp view" class="sub-image" data-scroll data-scroll-class="reveal">
+          <img src="images/bench6.jpg" alt="Lamp view" class="sub-image" data-scroll data-scroll-class="reveal">
+        </div>
+      </div>
+
+      <a href="index.html" class="next-project">next project↗</a>
+
+      <div class="next-projects">
+        <a href="#" class="project-tile" data-scroll data-scroll-class="reveal">
+          <img src="images/wirun.png" alt="wirun">
+          <div class="tile-overlay"></div>
+          <div class="pill"><span>wirun</span></div>
+        </a>
+        <a href="#" class="project-tile" data-scroll data-scroll-class="reveal">
+          <img src="images/carvuk.png" alt="carvuk">
+          <div class="tile-overlay"></div>
+          <div class="pill"><span>carvuk</span></div>
+        </a>
+        <a href="#" class="project-tile" data-scroll data-scroll-class="reveal">
+          <img src="images/moda.png" alt="moda">
+          <div class="tile-overlay"></div>
+          <div class="pill"><span>moda</span></div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

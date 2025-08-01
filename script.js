@@ -92,6 +92,12 @@ window.addEventListener('load', () => {
     img.setAttribute('data-scroll-class', 'reveal');
   });
 
+  // Ensure Locomotive Scroll recalculates positions after images are loaded
+  // so project tiles immediately gain the reveal class without requiring
+  // a manual window resize.
+  setTimeout(() => scroll.update(), 0);
+  window.addEventListener('resize', () => scroll.update());
+
   // Wipe reveal animation for hero SVGs
   document.querySelectorAll('.hero .svg-container.text, .hero .svg-container.hand, .hero .svg-container.pc').forEach((container, i) => {
     if (!container.querySelector('.wipe-reveal')) {

@@ -57,7 +57,7 @@
 }
 
 .project-details .detail-section .description {
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 1; /* use a single column on large screens */
 }
 
 .project-details .detail-section .image-group {
@@ -138,7 +138,7 @@
 
 /* Tablet layout adjustments */
 @media (max-width: 1024px) {
-  .project-details .description {
+  .project-details .detail-section .description {
     grid-column: 1 / span 2; /* allow text to span columns 1-2 */
   }
 }

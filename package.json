@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "mkdir -p dist && cat css/base.css css/nav.css css/hero.css css/projects.css css/contact.css css/project-details.css css/about.css > dist/styles.css"
+  },
   "dependencies": {
     "locomotive-scroll": "^4.1.4"
   }
